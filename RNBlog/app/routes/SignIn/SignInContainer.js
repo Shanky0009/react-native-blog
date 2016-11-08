@@ -48,12 +48,10 @@ class SignInContainer extends Component {
 
   handleSignIn() {
     if (this.validInput(true)) {
-      const { email, password } = this.state;
-      console.log("users :", email, password)
+      const { username, email, password } = this.state;
       Meteor.loginWithPassword({email:email}, password, (err) => {
         if (err) {
-          console.log(err);
-          console.log(Meteor.user())
+          alert(err.reason);
         } else {
           console.log("in")
           this.props.navigator.resetTo(Routes.getHomeRoute())
@@ -63,16 +61,16 @@ class SignInContainer extends Component {
   }
 
   handleCreateAccount() {
-    const { email, password } = this.state;
+    const { username, email, password } = this.state;
     console.log(email, password);
     if (this.validInput()) {
       
-      Accounts.createUser({ email, password }, function(err) {
+      Accounts.createUser({ username, email, password }, function(err) {
         if (err) {
-          console.log(err.reason);
+          alert(err.reason);
         } else {
           console.log("SignIn")
-          this.handleSignIn();
+          // this.handleSignIn();
         }
       });
     } else {

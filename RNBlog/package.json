@@ -10,6 +10,7 @@
     "@exponent/react-native-navigator": "^0.4.9",
     "react": "15.3.2",
     "react-native": "0.36.1",
+    "react-native-menu": "^0.20.2",
     "react-native-meteor": "^1.0.1",
     "react-native-tab-navigator": "^0.3.3"
   },

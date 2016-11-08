@@ -1,7 +1,10 @@
 import React from 'react';
 import TabNavigator from 'react-native-tab-navigator';
+import { Image } from 'react-native';
 import ExNavigator from '@exponent/react-native-navigator';
 import Routes from '../../config/routes';
+import images from '../../config/images';
+import styles from './styles';
 
 class Logged extends React.Component {
 	constructor(props){
@@ -14,6 +17,8 @@ class Logged extends React.Component {
 	renderTabItem(title, initialRoute, Icon){
 		const { selectedTab } = this.state;
 		const sceneStyle = [];
+		
+
 		if(initialRoute.showNavigationBar !== false){
 			sceneStyle.push({paddingTop:64 });
 		}
@@ -22,6 +27,13 @@ class Logged extends React.Component {
 			<TabNavigator.Item
 				selected={selectedTab === title}
 				title = {title}
+				renderIcon={() => <Image style={styles.icon} source={Icon} />}
+		        renderSelectedIcon={() => (
+		          <Image
+		            style={[styles.icon, styles.iconSelected]}
+		            source={Icon}
+		          />
+		        )}
 				onPress={() => this.setState({ selectedTab: title })}
 			>
 				<ExNavigator
@@ -34,11 +46,17 @@ class Logged extends React.Component {
 		);
 	}
 	render(){
+		// let sceneStyle = {};
+		// let tabBarStyle = {}
+		// tabBarStyle.height = 0;
+		// tabBarStyle.overflow = 'hidden';
+		// sceneStyle.paddingBottom = 0;
+		// tabBarStyle={tabBarStyle} sceneStyle={sceneStyle}
 		return(
-			<TabNavigator>
-				{this.renderTabItem('Home', Routes.getHomeRoute())}
-				{this.renderTabItem('Blogs', Routes.getBlogRoute())}
-				{this.renderTabItem('Sign In', Routes.getSignInRoute())}
+			<TabNavigator >
+				{this.renderTabItem('Home', Routes.getHomeRoute(),images.icons.home)}
+				{this.renderTabItem('Blogs', Routes.getBlogRoute(),images.icons.blog)}
+				{this.renderTabItem('Sign In', Routes.getSignInRoute(),images.icons.profile)}
 			</TabNavigator>	
 		);
 	}

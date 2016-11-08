@@ -28,18 +28,56 @@ export default StyleSheet.create({
 	    marginBottom: 25,
 	    alignItems: 'center',
 	    textAlign:'center',
+	    color:"#FFFFFF"
   	},
+  	list: {
+  		flexDirection: 'column',
+	    flexWrap: 'wrap',
+	    justifyContent: 'center',
+	    // backgroundColor:'#ebeef0',
+        alignItems:'center',
+	 },
 	item: {
-	    backgroundColor: colors.buttonBackground,
-	    // color: colors.buttonText,
-	    width: cardSize,
-	    height: cardSize,
-	    // marginHorizontal: MARGIN_HORIZONTAL,
-	    marginVertical: 5,
-	    paddingTop: cardSize / 2.3,
-	    // fontSize: 16,
-	    // fontWeight: '500',
-	    // textAlign: 'center',
-	    alignItems: 'center',
+	    backgroundColor:'#ef553a',
+        width:300,
+        paddingTop:10,
+        paddingBottom:20,
+        paddingLeft:20,
+        paddingRight:20, 
+        marginBottom:10,
+        borderRadius:10
 	},
+	messageBoxTitleText:{
+        fontWeight:'bold',
+        color:'#fff',
+        textAlign:'center',
+        fontSize:20,
+        marginBottom:10,
+        flex:1
+    },
+    messageBoxBodyText:{
+        color:'#fff',
+        fontSize:16
+    },
+	cornerButton:{
+		width: 10,
+		backgroundColor:'#ef553a',
+	},
+	commentButton:{
+		width: 250,
+		flexDirection: 'column',
+		flexWrap: 'wrap',
+		backgroundColor:'#ef553a',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	buttonText: {
+	    color: '#fff',
+	    fontSize: 16,
+	    fontWeight: '500',
+	    textAlign:'center',
+	},
+	titleTop:{
+        flexDirection:'row'
+	}
 });

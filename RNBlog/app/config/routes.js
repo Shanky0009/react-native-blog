@@ -12,9 +12,7 @@ export const routes = {
 				return <Home navigator = {navigator} />;
 			},
 
-			getTitle(){
-				return 'Home';
-			},
+			showNavigationBar: false,
 		}
 	},
 	getSignInRoute() {
@@ -30,10 +28,7 @@ export const routes = {
 		    renderScene(navigator) {
 		        return <Blog navigator={navigator} />;
 		    },
-
-		    getTitle() {
-		        return 'Blogs';
-		    },
+		    showNavigationBar: false,
 	    };
   	},
 	getAddBlogRoute() {
@@ -41,6 +36,7 @@ export const routes = {
 		    renderScene(navigator) {
 		        return <AddBlog navigator={navigator} />;
 		    },
+		    showNavigationBar: false,
 	    };
   	},
   	getLogoutRoute() {

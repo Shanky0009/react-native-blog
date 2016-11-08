@@ -17,7 +17,8 @@ Meteor.methods({
 
 		blogData = {
 			title: title,
-			content:content
+			content:content,
+			owner:userId
 		}
 		
 		console.log(blogData)
@@ -29,6 +30,34 @@ Meteor.methods({
 		});
 			
 	},
-	
+	'blogs.remove'(blogId){
+		const blog = Blogs.findOne(blogId);
+
+		if(blog.private && blog.owner !== this.userId){
+			throw new Meteor.Error('not-authorized');
+		}
+
+		if(blog.owner == this.userId){
+			Blogs.remove(blogId);
+		} else {
+			console.log("out")
+			throw new Meteor.Error('not-authorized');
+		}	
+	},
+	'blogs.comment'(comment, blogId, blogOwner){
+		console.log(comment, blogId, blogOwner)
+		Blogs.update(blogId, { 
+			$push: {
+				comments: {
+					comment: comment, 
+					_id: Math.random(), 
+					blogId:blogId, 
+					blogOwner:blogOwner, 
+				}  
+			}
+		},{ 
+			validate: false 
+		});
+	},
 	
 })

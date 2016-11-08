@@ -1,8 +1,11 @@
 import React from 'react';
 import Meteor , { createContainer } from 'react-native-meteor';
 import TabNavigator from 'react-native-tab-navigator';
+import { Image } from 'react-native';
 import ExNavigator from '@exponent/react-native-navigator';
 import Routes from '../../config/routes';
+import images from '../../config/images';
+import styles from './styles';
 
 class LoggedIn extends React.Component {
 	constructor(props){
@@ -23,6 +26,13 @@ class LoggedIn extends React.Component {
 			<TabNavigator.Item
 				selected={selectedTab === title}
 				title = {title}
+				renderIcon={() => <Image style={styles.icon} source={Icon} />}
+		        renderSelectedIcon={() => (
+		          <Image
+		            style={[styles.icon, styles.iconSelected]}
+		            source={Icon}
+		          />
+		        )}
 				onPress={() => this.setState({ selectedTab: title })}
 			>
 				<ExNavigator
@@ -38,9 +48,9 @@ class LoggedIn extends React.Component {
 		console.log(this.props.currentUser)
 		return(
 			<TabNavigator>
-				{this.renderTabItem('Home', Routes.getHomeRoute())}
-				{this.renderTabItem('Blogs', Routes.getBlogRoute())}
-				{this.renderTabItem('Logout', Routes.getLogoutRoute())}
+				{this.renderTabItem('Home', Routes.getHomeRoute(), images.icons.home)}
+				{this.renderTabItem('Blogs', Routes.getBlogRoute(), images.icons.blog)}
+				{this.renderTabItem('Logout', Routes.getLogoutRoute(), images.icons.profile)}
 			</TabNavigator>	
 		);
 	}
