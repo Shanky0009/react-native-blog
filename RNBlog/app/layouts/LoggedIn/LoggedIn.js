@@ -45,9 +45,13 @@ class LoggedIn extends React.Component {
 		);
 	}
 	render(){
-		console.log(this.props.currentUser)
+		let sceneStyle = {};
+		let tabBarStyle = {}
+		tabBarStyle.height = 0;
+		tabBarStyle.overflow = 'hidden';
+		sceneStyle.paddingBottom = 0;
 		return(
-			<TabNavigator>
+			<TabNavigator tabBarStyle={tabBarStyle} sceneStyle={sceneStyle}>
 				{this.renderTabItem('Home', Routes.getHomeRoute(), images.icons.home)}
 				{this.renderTabItem('Blogs', Routes.getBlogRoute(), images.icons.blog)}
 				{this.renderTabItem('Logout', Routes.getLogoutRoute(), images.icons.profile)}

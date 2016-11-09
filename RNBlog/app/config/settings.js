@@ -1,4 +1,4 @@
-let METEOR_URL = 'ws://192.168.0.113:3000/websocket';
+let METEOR_URL = 'ws://192.168.0.122:3000/websocket';
 if (process.env.NODE_ENV === 'production') {
   METEOR_URL = ''; 
 }

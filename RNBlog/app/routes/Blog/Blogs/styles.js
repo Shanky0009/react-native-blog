@@ -55,6 +55,14 @@ export default StyleSheet.create({
         marginBottom:10,
         flex:1
     },
+    commentBoxTitleText:{
+        fontWeight:'bold',
+        color:'#fff',
+        textAlign:'left',
+        fontSize:15,
+        marginBottom:10,
+        flex:1
+    },
     messageBoxBodyText:{
         color:'#fff',
         fontSize:16

@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { PropTypes } from 'react';
+import { View, Text, ScrollView } from 'react-native';
 import Meteor , { createContainer }  from 'react-native-meteor';
 import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-native-menu';
 import styles from './styles';
@@ -14,48 +14,68 @@ import Routes from '../../config/routes';
 const TopNavigationContainer = (props) => {
   return(
   <View style={{ padding: 10, flexDirection: 'row', backgroundColor: 'black' }}>
-    <View style={{ flex: 1}}><Text style={{ color:"#FFFFFF" }}>Bloggers' Blog!!</Text></View>
+    <View style={{ flex: 1}}><Text style={{ color:"#FFFFFF" }} onPress={props.onHomePress}>Bloggers' Blog!!</Text></View>
      <Menu onSelect={this.setMessage}>
             <MenuTrigger style={styles.menuTrigger}>
               <Text style={styles.menuTriggerText}>&#8942;</Text>
             </MenuTrigger>
             <MenuOptions style={styles.menuOptions}>
               <MenuOption value="normal">
-                <Text onPress={props.onSignInPress}>Home</Text>
+                <Text onPress={props.onHomePress}>Home</Text>
               </MenuOption>
               <MenuOption value="normal">
-                <Text onPress={props.onSignInPress}>Blogs</Text>
+                <Text onPress={props.onBlogPress}>Blogs</Text>
               </MenuOption>
+
+
+
+             
+                  <MenuOption value="normal">
+                    <Text onPress={props.onProfileViewPress}>Profile</Text>
+                  </MenuOption>
+                  <MenuOption value="normal">
+                    <Text onPress={props.onProfileUpdatePress}>Profile Update</Text>
+                  </MenuOption>
+               
+              
+
+
+
+              <View style={styles.divider}/>
               {Meteor.user()?
                 <MenuOption value="normal">
-                  <Text>Logout</Text>
+                  <Text onPress={props.onLogoutPress}>Logout</Text>
                 </MenuOption>  
               :
                 <MenuOption value="normal">
-                 <Text>Sign In</Text>
+                 <Text onPress={props.onSignInPress}>Sign In</Text>
                 </MenuOption>
               }
-              
-              <View style={styles.divider}/>
-              <MenuOption value={{ message: 'Hello World!' }}>
-                <Text>Option with object value</Text>
-              </MenuOption>
             </MenuOptions>
           </Menu>
   </View>
   )
 };
 
+
+
 const TopNavigation = (props) => {
+ 
   return (
     <TopNavigationContainer
+      onHomePress={() => props.navigator.resetTo(Routes.getHomeRoute())} 
+      onBlogPress={() => props.navigator.resetTo(Routes.getBlogRoute())}
+      onProfileViewPress={() => props.navigator.resetTo(Routes.getProfileViewRoute())}
+      onProfileUpdatePress={() => props.navigator.resetTo(Routes.getProfileUpdateRoute())}
       onSignInPress={() => props.navigator.resetTo(Routes.getSignInRoute())}
       onLogoutPress={() => props.navigator.resetTo(Routes.getLogoutRoute())}
     />  
   );
 };
 
-
+TopNavigation.propTypes = {
+  navigator: React.PropTypes.object,
+};
 
 
 export default TopNavigation

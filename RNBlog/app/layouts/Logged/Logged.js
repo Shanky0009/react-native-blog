@@ -1,7 +1,10 @@
 import React from 'react';
 import TabNavigator from 'react-native-tab-navigator';
-import { Image } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import ExNavigator from '@exponent/react-native-navigator';
+import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-native-menu';
+import Meteor from 'react-native-meteor';
+
 import Routes from '../../config/routes';
 import images from '../../config/images';
 import styles from './styles';
@@ -14,19 +17,16 @@ class Logged extends React.Component {
 		};
 	}
 
-	renderTabItem(title, initialRoute, Icon){
+	renderTabItem(title, initialRoute, Icon, event){
 		const { selectedTab } = this.state;
 		const sceneStyle = [];
-		
-
-		if(initialRoute.showNavigationBar !== false){
+			
+		if(initialRoute.showNavigationBar == true){
 			sceneStyle.push({paddingTop:64 });
-		}
-
+		} 
 		return(
 			<TabNavigator.Item
 				selected={selectedTab === title}
-				title = {title}
 				renderIcon={() => <Image style={styles.icon} source={Icon} />}
 		        renderSelectedIcon={() => (
 		          <Image
@@ -35,25 +35,29 @@ class Logged extends React.Component {
 		          />
 		        )}
 				onPress={() => this.setState({ selectedTab: title })}
-			>
-				<ExNavigator
+			>	
+				
+					<ExNavigator
 					initialRoute={initialRoute}
-					style={{flex:1}}
+					 style={{flex:1}}
 					sceneStyle={sceneStyle}
 					showNavigationBar={initialRoute.showNavigationBar}	
-				/>
+					/>
+					
+          		
+				
 			</TabNavigator.Item>	
 		);
 	}
 	render(){
-		// let sceneStyle = {};
-		// let tabBarStyle = {}
-		// tabBarStyle.height = 0;
-		// tabBarStyle.overflow = 'hidden';
-		// sceneStyle.paddingBottom = 0;
-		// tabBarStyle={tabBarStyle} sceneStyle={sceneStyle}
+		let sceneStyle = {};
+		let tabBarStyle = {}
+		tabBarStyle.height = 0;
+		tabBarStyle.overflow = 'hidden';
+		sceneStyle.paddingBottom = 0;
+		
 		return(
-			<TabNavigator >
+			<TabNavigator tabBarStyle={tabBarStyle} sceneStyle={sceneStyle}>
 				{this.renderTabItem('Home', Routes.getHomeRoute(),images.icons.home)}
 				{this.renderTabItem('Blogs', Routes.getBlogRoute(),images.icons.blog)}
 				{this.renderTabItem('Sign In', Routes.getSignInRoute(),images.icons.profile)}

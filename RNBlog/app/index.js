@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
+import { MenuContext } from 'react-native-menu';
 
+import TopNavigation from './layouts/TopNavigation';
 import settings from './config/settings';
 import Logged from './layouts/Logged';
 import LoggedIn from './layouts/LoggedIn';
@@ -17,8 +19,6 @@ class Blog extends Component{
 		} else {
 			return <Logged />;
 		}
-		
-		
 	}
 	
 }

@@ -8,6 +8,7 @@ class BlogContainer extends Component{
     super(props)
     this.state = {
       oneBlog: '',
+      comment:'',
       flag:true
     };
     this.onDeleteBlogPress = this.onDeleteBlogPress.bind(this)
@@ -25,20 +26,37 @@ class BlogContainer extends Component{
   }
 
   onCommentBlogPress(id){
-    
-    let blogOwner = Meteor.collection('blogs').findOne({_id:id}).username
-    console.log(this.state.comment, id, blogOwner)
-    if(Meteor.userId()){
-      Meteor.call('blogs.comment', this.state.comment, id, blogOwner, function(err){
+    let blogOwner = Meteor.collection('blogs').findOne({_id:id}).owner;
+    console.log(id, blogOwner, Meteor.userId())
+    if(Meteor.userId() && this.state.comment != ''){
+      Meteor.call('blogs.comment', this.state.comment, id, blogOwner, Meteor.userId(), Meteor.user().username, function(err){
         if(err){
           alert(err.error)
         }
       });
+      this.setState({flag:false})
+      
+    }
+  }
+
+  onDeleteCommentPress(blogId, commentId){
+    let blogOwner = Meteor.collection('blogs').findOne({_id:blogId}).owner;
+    console.log(blogId, blogOwner, Meteor.userId())
+    if(Meteor.userId()){
+      Meteor.call('blogs.removeComment', blogId, commentId, blogOwner, Meteor.userId(), function(err){
+        if(err){
+          alert(err.error)
+        }
+      });
+      this.setState({flag:false})
     }
   }
 
   componentWillReceiveProps(nextProps){
-    this.setState({oneBlog:''})
+    if(this.state.flag)  
+      this.setState({oneBlog:''})
+    else
+      this.setState({comment:''})
   }
 
   onOneBlogPress(id){
@@ -52,6 +70,7 @@ class BlogContainer extends Component{
         onDeleteBlogPress={(id) => this.onDeleteBlogPress(id)}
         onOneBlogPress={(id) => this.onOneBlogPress(id)}
         onCommentBlogPress={(id) => this.onCommentBlogPress(id)}
+        onDeleteCommentPress={(blogId, commentId) => this.onDeleteCommentPress(blogId, commentId)}
         oneBlog={this.setState.bind(this)}
         updateState={this.setState.bind(this)}
         blogData={this.props.blogData}
@@ -60,8 +79,6 @@ class BlogContainer extends Component{
       />
     );
   }
-  
-  
 }
 
 BlogContainer.propTypes = {

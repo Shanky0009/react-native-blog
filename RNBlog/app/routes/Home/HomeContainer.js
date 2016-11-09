@@ -14,7 +14,6 @@ const HomeContainer = (props) => {
 };
 
 export default createContainer(() => {
-	console.log("users"+Meteor.user())
 	if(!Meteor.user()){
 		user = ''
 	} else {

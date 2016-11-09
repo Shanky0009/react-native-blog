@@ -1,24 +1,35 @@
 import React from 'react';
 import Meteor from 'react-native-meteor';
+import { MenuContext } from 'react-native-menu';
+
+import TopNavigation from '../layouts/TopNavigation';
 import Home from '../routes/Home';
 import SignIn from '../routes/SignIn';
 import Blog from '../routes/Blog/Blogs';
 import AddBlog from '../routes/Blog/AddBlog';
+import ProfileView from '../routes/Profile/ProfileView';
+import ProfileUpdate from '../routes/Profile/ProfileUpdate';
 
 export const routes = {
 	getHomeRoute(){
+		
 		return{
 			renderScene(navigator){
-				return <Home navigator = {navigator} />;
+				return <MenuContext style={{ flex: 1 }}>
+						<TopNavigation navigator={navigator} />
+						<Home navigator={navigator} />
+					</MenuContext>;
 			},
-
-			showNavigationBar: false,
+			showNavigationBar: false
 		}
 	},
 	getSignInRoute() {
 	    return {
 		    renderScene(navigator) {
-		        return <SignIn navigator={navigator} />;
+		        return <MenuContext style={{ flex: 1 }}>
+				        <TopNavigation navigator={navigator} />
+				        <SignIn navigator={navigator} />
+				    </MenuContext>;
 		    },
 		    showNavigationBar: false,
 	    };
@@ -26,7 +37,10 @@ export const routes = {
   	getBlogRoute() {
 	    return {
 		    renderScene(navigator) {
-		        return <Blog navigator={navigator} />;
+		        return <MenuContext style={{ flex: 1 }}>
+					        <TopNavigation navigator={navigator} />
+					        <Blog navigator={navigator} />
+					    </MenuContext>;
 		    },
 		    showNavigationBar: false,
 	    };
@@ -34,7 +48,32 @@ export const routes = {
 	getAddBlogRoute() {
 	    return {
 		    renderScene(navigator) {
-		        return <AddBlog navigator={navigator} />;
+		        return <MenuContext style={{ flex: 1 }}>
+					        <TopNavigation navigator={navigator} />
+					        <AddBlog navigator={navigator} />
+					      </MenuContext>;
+		    },
+		    showNavigationBar: true,
+	    };
+  	},
+  	getProfileViewRoute() {
+	    return {
+		    renderScene(navigator) {
+		        return <MenuContext style={{ flex: 1 }}>
+					        <TopNavigation navigator={navigator} />
+					        <ProfileView navigator={navigator} />
+					    </MenuContext>;
+		    },
+		    showNavigationBar: false,
+	    };
+  	},
+  	getProfileUpdateRoute() {
+	    return {
+		    renderScene(navigator) {
+		        return <MenuContext style={{ flex: 1 }}>
+					        <TopNavigation navigator={navigator} />
+					        <ProfileUpdate navigator={navigator} />
+					    </MenuContext>;
 		    },
 		    showNavigationBar: false,
 	    };
@@ -44,7 +83,10 @@ export const routes = {
 	    return {
 		    renderScene(navigator) {
 		    	Meteor.logout();
-		        return <Home navigator={navigator} />;
+		        return <MenuContext style={{ flex: 1 }}>
+		        				<TopNavigation navigator={navigator} />
+		        				<Home navigator={navigator} />
+		        			</MenuContext>;
 		    },
 	    };
   	},
