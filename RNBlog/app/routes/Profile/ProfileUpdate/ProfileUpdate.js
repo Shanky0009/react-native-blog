@@ -5,39 +5,60 @@ import images from '../../../config/images';
 import styles from './styles';  
 
 const ProfileUpdate = (props) => {
-	const {updateState} = props;
+	const {updateState, profile} = props;
 	return (
 		<Image
 			style={styles.backgroundImage}
 			source={images.backGround}
 		>
 			<View>
-				<TextInput 
-					placeholder="First Name"
-			        onChangeText={(firstName) => updateState({ firstName })}
-			        style={styles.main}
-				/>
-				<TextInput 
-					placeholder="last Name"
-			        onChangeText={(lastName) => updateState({ lastName })}
-			        style={styles.main}
-				/>
-				<TextInput 
-					placeholder="Address"
-			        onChangeText={(address) => updateState({ address })}
-			        style={styles.main}
-				/>
-				<TextInput 
-					placeholder="Phone Number"
-			        onChangeText={(PhnNo) => updateState({ PhnNo })}
-			        style={styles.main}
-				/>
+				<Text style={styles.header}>
+					Update Your Profile....!!!
+				</Text>
+			</View>
 
-				<TouchableOpacity
-					onPress={()=> props.onProfileUpdate}
-				>
-					<Text>Update</Text>
-				</TouchableOpacity>		
+			<View>
+				<View style={styles.container}>
+					<TextInput 
+						placeholder="First Name"
+						defaultValue={profile.firstName}
+				        onChangeText={(firstName) => updateState({ firstName })}
+				        style={styles.main}
+					/>
+				</View>
+				<View style={styles.container}>
+					<TextInput 
+						placeholder="Last Name"
+						defaultValue={profile.lastName}
+				        onChangeText={(lastName) => updateState({ lastName })}
+				        style={styles.main}
+					/>
+				</View>
+				<View style={styles.container}>
+					<TextInput 
+						placeholder="Address"
+						defaultValue={profile.address}
+				        onChangeText={(address) => updateState({ address })}
+				        style={styles.main}
+					/>
+				</View>
+				<View style={styles.container}>
+					<TextInput 
+						placeholder="Phone Number"
+						defaultValue={profile.phnNo}
+				        onChangeText={(phnNo) => updateState({ phnNo })}
+				        style={styles.main}
+					/>
+
+				</View>
+				<View style={styles.buttons}>
+					<TouchableOpacity
+						style={styles.button}
+						onPress={props.onProfileUpdatePress}
+					>
+						<Text style={styles.buttonText}>Update</Text>
+					</TouchableOpacity>
+				</View>		
 			</View>
 		</Image>			
 	)

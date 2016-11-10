@@ -4,16 +4,16 @@ import {colors} from '../../../config/styles';
 
 export default StyleSheet.create({
 	container:{
-		flex:1,
-		justifyContent:'center',
-		alignItems:'center',
+		marginTop:10,
+		marginBottom:10,
+		height:60
 	},
 	main:{
-		fontSize:20,
-		textAlign:'center',
-		color:'#eff0f1',
-		fontWeight:'400',
-		fontStyle:'italic',
+		marginBottom: 25,
+	    alignItems: 'flex-start',
+	    fontSize:20,
+	    textAlign:'center',
+	    color:"#FFFFFF"
 	},
 	backgroundImage: {
 	    flex: 1,
