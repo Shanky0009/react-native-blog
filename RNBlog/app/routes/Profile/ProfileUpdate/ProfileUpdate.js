@@ -1,11 +1,11 @@
 import React from 'react';
 import {Text, View, TextInput, Image, TouchableOpacity} from 'react-native'
-
+import FileInput from 'react-file-input';
 import images from '../../../config/images';
 import styles from './styles';  
 
 const ProfileUpdate = (props) => {
-	const {updateState, profile} = props;
+	const {updateState, profile, profilePic} = props;
 	return (
 		<Image
 			style={styles.backgroundImage}
@@ -18,6 +18,42 @@ const ProfileUpdate = (props) => {
 			</View>
 
 			<View>
+				<View style={styles.profilePicView}>
+				{profile.profilePic?
+					<Image
+						source={profilePic} 
+						style={styles.profilePic}>
+						
+							<TouchableOpacity
+								style={styles.profilePicButton}
+								onPress={props.uploadPress}
+								>
+							<Image 
+									source={images.camera}
+									style={styles.profilePicButtonImage} />
+							</TouchableOpacity>
+						
+					</Image>
+				:
+					<Image
+						source={images.avatar} 
+						style={styles.profilePic}>
+						<View style={styles.profilePicButtonView}>
+							<TouchableOpacity
+								style={styles.profilePicButton}
+								onPress={props.uploadPress}
+								>
+								<Image 
+									source={images.camera}
+									style={styles.profilePicButtonImage}/>
+							</TouchableOpacity>
+						</View>
+					</Image>
+				}
+						
+				</View>
+
+
 				<View style={styles.container}>
 					<TextInput 
 						placeholder="First Name"

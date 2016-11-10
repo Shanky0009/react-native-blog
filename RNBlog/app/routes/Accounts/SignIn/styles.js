@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {colors} from '../../config/styles';
+import {colors} from '../../../config/styles';
 
 
 export default StyleSheet.create({
@@ -45,6 +45,6 @@ export default StyleSheet.create({
 	    textAlign:'center',
 	},
 	buttons:{
-		width:600,
+		alignItems:'center'
 	}
 });

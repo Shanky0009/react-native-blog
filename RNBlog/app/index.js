@@ -6,6 +6,7 @@ import TopNavigation from './layouts/TopNavigation';
 import settings from './config/settings';
 import Logged from './layouts/Logged';
 import LoggedIn from './layouts/LoggedIn';
+import Loading from './components/Loading';
 import Home from './routes/Home';
 
 Meteor.connect(settings.METEOR_URL);
@@ -14,7 +15,10 @@ class Blog extends Component{
 	render(){
 		const { status, user, loggingIn } = this.props;
 
-		if (user !== null) {
+		if (status.connected === false || loggingIn) {
+			return <Loading message="Logging in to Bloggers' Blog"/>
+		}	
+		else if (user !== null) {
 		    return <LoggedIn />;
 		} else {
 			return <Logged />;

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { LayoutAnimation } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
-import Routes from '../../config/routes';
-import SignIn from './SignIn';
+import Routes from '../../../config/routes';
+import SignUp from './SignUp';
 
-class SignInContainer extends Component {
+class SignUpContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -35,7 +35,7 @@ class SignInContainer extends Component {
     let valid = true;
 
     if (email.length === 0 || password.length === 0) {
-      this.handleError('Email and password cannot be empty.');
+      alert('Email and password cannot be empty.');
       valid = false;
     }
 
@@ -46,17 +46,15 @@ class SignInContainer extends Component {
     return valid;
   }
 
-  handleSignIn() {
+  handleSignUp() {
     if (this.validInput(true)) {
-      const { username, email, password } = this.state;
+      const { email, password } = this.state;
       Meteor.loginWithPassword({email:email}, password, (err) => {
         if (err) {
           alert(err.reason);
-        } else {
-          console.log("in")
-          this.props.navigator.resetTo(Routes.getHomeRoute())
         }
       });
+      this.props.navigator.resetTo(Routes.getHomeRoute())
     }
   }
 
@@ -69,8 +67,8 @@ class SignInContainer extends Component {
         if (err) {
           alert(err.reason);
         } else {
-          console.log("SignIn")
-          // this.handleSignIn();
+          console.log("SignUp")
+          this.handleSignUp();
         }
       });
     } else {
@@ -80,9 +78,8 @@ class SignInContainer extends Component {
 
   render() {
     return (
-      <SignIn
+      <SignUp
         updateState={this.setState.bind(this)}
-        signIn={this.handleSignIn.bind(this)}
         createAccount={this.handleCreateAccount.bind(this)}
         {...this.state}
       />
@@ -90,4 +87,4 @@ class SignInContainer extends Component {
   }
 }
 
-export default SignInContainer;
+export default SignUpContainer;

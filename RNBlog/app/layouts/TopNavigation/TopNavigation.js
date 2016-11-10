@@ -26,30 +26,27 @@ const TopNavigationContainer = (props) => {
               <MenuOption value="normal">
                 <Text onPress={props.onBlogPress}>Blogs</Text>
               </MenuOption>
-
-
-
-             
-                  <MenuOption value="normal">
-                    <Text onPress={props.onProfileViewPress}>Profile</Text>
-                  </MenuOption>
-                  <MenuOption value="normal">
-                    <Text onPress={props.onProfileUpdatePress}>Profile Update</Text>
-                  </MenuOption>
-               
               
-
-
-
-              <View style={styles.divider}/>
               {Meteor.user()?
-                <MenuOption value="normal">
-                  <Text onPress={props.onLogoutPress}>Logout</Text>
-                </MenuOption>  
+                <View>
+                  <MenuOption value="normal">
+                      <Text onPress={props.onProfileViewPress}>Profile</Text>
+                    </MenuOption>
+                    <MenuOption value="normal">
+                      <Text onPress={props.onProfileUpdatePress}>Profile Update</Text>
+                  </MenuOption>
+                  <View style={styles.divider}/>
+                  <MenuOption value="normal">
+                    <Text onPress={props.onLogoutPress}>Logout</Text>
+                  </MenuOption>
+                </View>  
               :
-                <MenuOption value="normal">
-                 <Text onPress={props.onSignInPress}>Sign In</Text>
-                </MenuOption>
+                <View>
+                  <View style={styles.divider}/>
+                  <MenuOption value="normal">
+                   <Text onPress={props.onSignInPress}>Sign In</Text>
+                  </MenuOption>
+                </View>
               }
             </MenuOptions>
           </Menu>

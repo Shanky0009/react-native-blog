@@ -19,5 +19,17 @@ export default StyleSheet.create({
 	    flex: 1,
 	    width: null,
     	height: null,
-  	}
+  	},
+	profilePicView:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'center',
+        marginTop:10,
+		marginBottom:10,
+  	},
+  	profilePic:{
+  		width:100,
+    	height: 100,
+  	},
+  	
 });

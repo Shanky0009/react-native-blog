@@ -93,9 +93,9 @@ export default createContainer(() => {
   } else {
     user = Meteor.user()
   }
+  console.log(blogData.ready())
   return {
     blogData: blogData.ready(),
     currentUser: user,
-    blogs:Meteor.collection('blogs').find(),
   };
 }, BlogContainer);

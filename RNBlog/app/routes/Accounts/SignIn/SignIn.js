@@ -3,9 +3,9 @@ import { Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { MenuContext } from 'react-native-menu';
 
-import TopNavigation from '../../layouts/TopNavigation';
-import Button from '../../components/Button';
-import images from '../../config/images';
+import TopNavigation from '../../../layouts/TopNavigation';
+import Button from '../../../components/Button';
+import images from '../../../config/images';
 import styles from './styles';
 
 
@@ -23,15 +23,6 @@ const SignIn = (props) => {
 					</Text>
 				</View>
 
-				<View style={styles.container}>
-					<TextInput
-						placeholder="Username"
-				        autoCapitalize="none"
-				        autoCorrect={false}
-				        onChangeText={(username) => updateState({ username })}
-				        style={styles.main}
-				      />
-				</View> 
 				<View style={styles.container}>
 					<TextInput
 						placeholder="Email Address"
@@ -57,6 +48,9 @@ const SignIn = (props) => {
 				        	Sign In
 				      	</Text>
 				    </TouchableOpacity>
+				    <Text style={styles.buttonText}>
+				    	Or
+				    </Text>
 					<TouchableOpacity style={styles.button} onPress={createAccount}>
 				      	<Text style={styles.buttonText} >
 				        	Create Account

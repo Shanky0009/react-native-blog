@@ -4,9 +4,7 @@ import {colors} from '../../../config/styles';
 
 export default StyleSheet.create({
 	container:{
-		marginTop:10,
-		marginBottom:10,
-		height:60
+		marginTop:20,
 	},
 	main:{
 		fontSize:20,
@@ -47,28 +45,6 @@ export default StyleSheet.create({
 	    textAlign:'center',
 	},
 	buttons:{
-		
 		alignItems:'center'
-	},
-	profilePicView:{
-        flexDirection:'row',
-        alignItems:'center',
-        justifyContent:'center',
-
-  	},
-  	profilePic:{
-  		width:100,
-    	height: 100,
-  	},
-  	profilePicButtonView:{
-  		width:30,
-  	},
-  	profilePicButton:{
-  		width:30,
-  		height:20,
-  	},
-  	profilePicButtonImage:{
-		width:20,
-		height:20,
-  	}
+	}
 });

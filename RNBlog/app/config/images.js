@@ -5,6 +5,8 @@ const images = {
     	blog: require('../images/Blog.png'),
   	},
   	backGround: require('../images/header-image.png'),
+  	avatar: require('../images/avatar.png'),
+  	camera: require('../images/camera.png'),
 };
 
 export default images;

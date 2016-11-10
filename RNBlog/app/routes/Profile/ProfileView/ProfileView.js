@@ -13,26 +13,41 @@ const ProfileView = (props) => {
 			source={images.backGround}>
 			{profile?
 				<View style={styles.container}>
-					<Text style={styles.main}>
-						Username: 
-						{Meteor.user().username}
-					</Text>
-					<Text style={styles.main}>
-						First Name: 
-						{profile.firstName}
-					</Text>
-					<Text style={styles.main}>
-						Last Name: 
-						{profile.lastName}
-					</Text>
-					<Text style={styles.main}>
-						Address: 
-						{profile.address}
-					</Text>
-					<Text style={styles.main}>
-						Phone no.: 
-						{profile.phnNo}
-					</Text>
+					<View style={styles.profilePicView}>
+						<Image source={profile.profilePic}
+						style={styles.profilePic}
+						/>
+					</View>
+					<View style={styles.container}>
+						<Text style={styles.main}>
+							Username: 
+							{Meteor.user().username}
+						</Text>
+					</View>
+					<View style={styles.container}>
+						<Text style={styles.main}>
+							First Name: 
+							{profile.firstName}
+						</Text>
+					</View>
+					<View style={styles.container}>
+						<Text style={styles.main}>
+							Last Name: 
+							{profile.lastName}
+						</Text>
+					</View>
+					<View style={styles.container}>
+						<Text style={styles.main}>
+							Address: 
+							{profile.address}
+						</Text>
+					</View>
+					<View style={styles.container}>
+						<Text style={styles.main}>
+							Phone no.: 
+							{profile.phnNo}
+						</Text>
+					</View>
 				</View>		
 			:
 				<View style={styles.container}>

@@ -4,7 +4,8 @@ import { MenuContext } from 'react-native-menu';
 
 import TopNavigation from '../layouts/TopNavigation';
 import Home from '../routes/Home';
-import SignIn from '../routes/SignIn';
+import SignIn from '../routes/Accounts/SignIn';
+import SignUp from '../routes/Accounts/SignUp';
 import Blog from '../routes/Blog/Blogs';
 import AddBlog from '../routes/Blog/AddBlog';
 import ProfileView from '../routes/Profile/ProfileView';
@@ -29,6 +30,17 @@ export const routes = {
 		        return <MenuContext style={{ flex: 1 }}>
 				        <TopNavigation navigator={navigator} />
 				        <SignIn navigator={navigator} />
+				    </MenuContext>;
+		    },
+		    showNavigationBar: false,
+	    };
+  	},
+  	getSignUpRoute() {
+	    return {
+		    renderScene(navigator) {
+		        return <MenuContext style={{ flex: 1 }}>
+				        <TopNavigation navigator={navigator} />
+				        <SignUp navigator={navigator} />
 				    </MenuContext>;
 		    },
 		    showNavigationBar: false,
