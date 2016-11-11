@@ -35,7 +35,7 @@ class SignInContainer extends Component {
     let valid = true;
 
     if (email.length === 0 || password.length === 0) {
-      this.handleError('Email and password cannot be empty.');
+      alert('Email and password cannot be empty.');
       valid = false;
     }
 
@@ -47,7 +47,7 @@ class SignInContainer extends Component {
   }
 
   handleSignIn() {
-    if (this.validInput(true)) {
+    if (this.validInput()) {
       const { email, password } = this.state;
       Meteor.loginWithPassword({email:email}, password, (err) => {
         if (err) {

@@ -114,8 +114,8 @@ const Blog = (props) => {
 									</View>	
 					        	}
 					        </View>	
-				        }	
-				     />
+				        	}	
+				     		/>
 						:
 							<MeteorComplexListView
 					        contentContainerStyle={styles.list}

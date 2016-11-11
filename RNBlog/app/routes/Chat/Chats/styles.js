@@ -36,53 +36,18 @@ export default StyleSheet.create({
 	 },
 	item: {
 	    backgroundColor:'#ef553a',
-        width:300,
+        width:550,
         paddingTop:10,
         paddingBottom:20,
-        paddingLeft:20,
-        paddingRight:20, 
+        // paddingLeft:20,
+        // paddingRight:20, 
         marginBottom:10,
-        borderRadius:10
+        borderRadius:3
 	},
-	messageBoxTitleText:{
-        fontWeight:'bold',
-        color:'#fff',
-        textAlign:'center',
-        fontSize:20,
-        marginBottom:10,
-        flex:1
-    },
-    commentBoxTitleText:{
-        fontWeight:'bold',
-        color:'#fff',
-        textAlign:'left',
-        fontSize:15,
-        marginBottom:10,
-        flex:1
-    },
-    messageBoxBodyText:{
-        color:'#fff',
-        fontSize:16
-    },
-	cornerButton:{
-		width: 10,
-		backgroundColor:'#ef553a',
-	},
-	commentButton:{
-		width: 250,
-		flexDirection: 'column',
-		flexWrap: 'wrap',
-		backgroundColor:'#ef553a',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	buttonText: {
+	chatButton: {
 	    color: '#fff',
 	    fontSize: 16,
 	    fontWeight: '500',
 	    textAlign:'center',
 	},
-	titleTop:{
-        flexDirection:'row'
-	}
 });

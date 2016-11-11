@@ -8,6 +8,8 @@ import SignIn from '../routes/Accounts/SignIn';
 import SignUp from '../routes/Accounts/SignUp';
 import Blog from '../routes/Blog/Blogs';
 import AddBlog from '../routes/Blog/AddBlog';
+import Chats from '../routes/Chat/Chats';
+import ChatView from '../routes/Chat/ChatView';
 import ProfileView from '../routes/Profile/ProfileView';
 import ProfileUpdate from '../routes/Profile/ProfileUpdate';
 
@@ -66,6 +68,28 @@ export const routes = {
 					      </MenuContext>;
 		    },
 		    showNavigationBar: true,
+	    };
+  	},
+  	getChatsRoute(){
+	    return {
+		    renderScene(navigator) {
+		        return <MenuContext style={{ flex: 1 }}>
+					        <TopNavigation navigator={navigator} />
+					        <Chats navigator={navigator} />
+					    </MenuContext>;
+		    },
+		    showNavigationBar: false,
+	    };
+  	},
+  	getChatViewRoute(user){
+	    return {
+		    renderScene(navigator) {
+		        return <MenuContext style={{ flex: 1 }}>
+					        <TopNavigation navigator={navigator} />
+					        <ChatView navigator={navigator} user={user} />
+					    </MenuContext>;
+		    },
+		    showNavigationBar: false,
 	    };
   	},
   	getProfileViewRoute() {

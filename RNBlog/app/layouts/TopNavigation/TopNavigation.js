@@ -35,6 +35,9 @@ const TopNavigationContainer = (props) => {
                     <MenuOption value="normal">
                       <Text onPress={props.onProfileUpdatePress}>Profile Update</Text>
                   </MenuOption>
+                  <MenuOption value="normal">
+                      <Text onPress={props.onChatsPress}>Chats</Text>
+                  </MenuOption>
                   <View style={styles.divider}/>
                   <MenuOption value="normal">
                     <Text onPress={props.onLogoutPress}>Logout</Text>
@@ -62,6 +65,7 @@ const TopNavigation = (props) => {
     <TopNavigationContainer
       onHomePress={() => props.navigator.resetTo(Routes.getHomeRoute())} 
       onBlogPress={() => props.navigator.resetTo(Routes.getBlogRoute())}
+      onChatsPress={() => props.navigator.resetTo(Routes.getChatsRoute())}
       onProfileViewPress={() => props.navigator.resetTo(Routes.getProfileViewRoute())}
       onProfileUpdatePress={() => props.navigator.resetTo(Routes.getProfileUpdateRoute())}
       onSignInPress={() => props.navigator.resetTo(Routes.getSignInRoute())}
