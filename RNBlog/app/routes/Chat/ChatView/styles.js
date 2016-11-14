@@ -13,7 +13,7 @@ export default StyleSheet.create({
 		fontSize:20,
 		textAlign:'center',
 		color:'#eff0f1',
-		backgroundColor:'#ef553a',
+		backgroundColor:'#2b2926',
 		fontWeight:'400',
 		fontStyle:'italic',
 	},
@@ -36,7 +36,7 @@ export default StyleSheet.create({
         alignItems:'center',
 	 },
 	item: {
-	    backgroundColor:'#ef553a',
+	    backgroundColor:'#2b2926',
         width:550,
         paddingTop:10,
         paddingBottom:20,
@@ -50,7 +50,7 @@ export default StyleSheet.create({
 	    fontSize: 16,
 	    fontWeight: '500',
 	    textAlign:'center',
-	    backgroundColor:'#ef553a'
+	    backgroundColor:'#2b2926'
 	},
 	chatMessage:{
 		// flex:1,
@@ -74,12 +74,13 @@ export default StyleSheet.create({
 	},
 	chatMessage1:{
 		flex:0,
-		backgroundColor:'#ef553a',
+		backgroundColor:'#2b2926',
 		flexDirection:'column',
 		alignItems:'flex-end',
-		width:180,
+		minWidth:180,
+		maxWidth:200,
 		left:90,
-        height:35,
+        minHeight:35,
         borderLeftWidth :0,
         justifyContent: 'space-around',
         position: 'relative',
@@ -88,16 +89,14 @@ export default StyleSheet.create({
         marginBottom:10,
         borderRadius:3,
 	},
-	// chatMessage1::before:{
-				
-	// 		}
 	chatMessage2:{
-		backgroundColor:'#ef553a',
-        width:180,
+		backgroundColor:'#2b2926',
+        minWidth:180,
+		maxWidth:180,
         flexDirection:'column',
 		alignItems:'flex-start',
         right:90,
-        height:35,
+        minHeight:35,
         borderLeftWidth :0,
         justifyContent: 'space-around',
         position: 'relative',
@@ -105,5 +104,8 @@ export default StyleSheet.create({
         paddingRight:20, 
         marginBottom:10,
         borderRadius:3,
+	},
+	message:{
+		color:'#FFFFFF'
 	}
 });

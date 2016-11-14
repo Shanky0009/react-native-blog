@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { LayoutAnimation } from 'react-native';
+import { LayoutAnimation, Keyboard, Platform } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
 import Routes from '../../../config/routes';
 import SignUp from './SignUp';
@@ -14,6 +14,19 @@ class SignUpContainer extends Component {
       password: '',
       error: null,
     };
+
+    this.contentHeight = null
+      this.scrollHeight = null
+      this.scrollY = null
+
+    ;[
+      'handleKeyboardShow', 'handleKeyboardHide',
+      'handleLayout', 'handleScroll',
+    ].forEach((method) => {
+      this[method] = this[method].bind(this)
+    })
+
+    let scroller = null;
   }
 
   componentWillMount() {
@@ -22,6 +35,50 @@ class SignUpContainer extends Component {
 
   componentWillUnmount() {
     this.mounted = false;
+  }
+
+  componentDidMount () {
+    Keyboard.addListener('keyboardDidShow', this.handleKeyboardShow)
+    Keyboard.addListener('keyboardDidHide', this.handleKeyboardHide)
+  }
+  
+  componentWillUnmount () {
+    Keyboard.removeListener('keyboardDidShow', this.handleKeyboardShow)
+    Keyboard.removeListener('keyboardDidHide', this.handleKeyboardHide)
+  }
+
+  handleKeyboardShow () {
+      this.scrollToBottom()
+  }
+  
+  handleKeyboardHide () {
+    const { scrollY, scrollHeight, contentHeight } = this
+
+    if (Platform.OS === 'ios') {
+        if (scrollY > contentHeight - scrollHeight) {
+          scroller.scrollTo({ y: 0 })
+        }
+        else {
+          scroller.scrollTo({ y: scrollY })
+      }
+    }
+  }
+
+  handleScroll (e) {
+    this.scrollY = e.nativeEvent.contentOffset.y
+  }
+  handleLayout (e) {
+    this.scrollHeight = e.nativeEvent.layout.height
+  }
+  
+  scrollToBottom () {
+      const { scrollHeight, contentHeight } = this
+      if (scrollHeight == null) {
+        return
+      }
+      if (contentHeight > scrollHeight) {
+        scroller.scrollTo({ y: contentHeight - scrollHeight })
+      }
   }
 
   handleError(error) {

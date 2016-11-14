@@ -11,7 +11,7 @@ export default StyleSheet.create({
 	main:{
 		fontSize:20,
 		textAlign:'center',
-		color:'#eff0f1',
+		color:'#484040',
 		fontWeight:'400',
 		fontStyle:'italic',
 	},

@@ -26,13 +26,30 @@ const Chats = (props) => {
 					        renderRow={(user) =>
 
 					        	<View style={styles.item}>
-					        		<TouchableOpacity style={styles.cornerButton} onPress={() => props.onOpenChat(user)}>
-										<Text style={styles.chatButton}>{user.username}</Text>
-						        		{props.chatHandle?
-						        			<Text style={styles.header}>Inside</Text>
-						        		:
-						        			<Text style={styles.header}>Outside</Text>
-						        		}			      
+					        		<TouchableOpacity style={styles.chatTouch} onPress={() => props.onOpenChat(user)}>
+					        			<Image 
+					        				source={user.profile.profilePic} 
+											style={styles.chatDp}>
+										</Image>
+										<View></View>
+										<View style={styles.chatUser}>	
+											<Text style={styles.chatButton}>{user.username}</Text>
+											<Text style={styles.chatButton}>{user._id} </Text>
+										</View>
+										<View style={styles.availability}>	
+										{user.session == 'available'?
+											<Image
+												source={images.available} 
+												style={styles.chatAvailability}>
+											</Image>
+										:
+											<Image
+												source={images.unavailable} 
+												style={styles.chatAvailability}>
+											</Image>	
+										}
+										</View>
+						        				      
 									</TouchableOpacity>
 					        		
 					        	</View>

@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Meteor, { createContainer, Accounts } from 'react-native-meteor';
+import { Keyboard, Platform } from 'react-native';
+
 import Routes from '../../../config/routes';
 import Blog from './Blog';
 
@@ -11,7 +13,59 @@ class BlogContainer extends Component{
       comment:'',
       flag:true
     };
-    this.onDeleteBlogPress = this.onDeleteBlogPress.bind(this)
+    ;[
+      'handleKeyboardShow', 'handleKeyboardHide',
+      'handleLayout', 'handleScroll',
+    ].forEach((method) => {
+      this[method] = this[method].bind(this)
+    })
+
+    let scroller = null;
+    this.onDeleteBlogPress = this.onDeleteBlogPress.bind(this);
+    textInput = null;
+  }
+
+  componentDidMount () {
+    Keyboard.addListener('keyboardDidShow', this.handleKeyboardShow)
+    Keyboard.addListener('keyboardDidHide', this.handleKeyboardHide)
+  }
+  
+  componentWillUnmount () {
+    Keyboard.removeListener('keyboardDidShow', this.handleKeyboardShow)
+    Keyboard.removeListener('keyboardDidHide', this.handleKeyboardHide)
+  }
+
+  handleKeyboardShow () {
+    this.scrollToBottom()
+  }
+  
+  handleKeyboardHide () {
+    const { scrollY, scrollHeight, contentHeight } = this
+
+    if (Platform.OS === 'ios') {
+        if (scrollY > contentHeight - scrollHeight) {
+          scroller.scrollTo({ y: 0 })
+        } else {
+          scroller.scrollTo({ y: scrollY })
+      }
+    }
+  }
+
+  handleScroll (e) {
+    this.scrollY = e.nativeEvent.contentOffset.y
+  }
+  handleLayout (e) {
+    this.scrollHeight = e.nativeEvent.layout.height
+  }
+
+  scrollToBottom () {
+    const { scrollHeight, contentHeight } = this
+    if (scrollHeight == null) {
+      return
+    }
+    if (contentHeight > scrollHeight) {
+      scroller.scrollTo({ y: contentHeight - scrollHeight })
+    }
   }
 
   onDeleteBlogPress(id){
@@ -22,6 +76,7 @@ class BlogContainer extends Component{
           alert(err.error)
         }
       });
+      this.props.navigator.push(Routes.getBlogRoute())
     }
   }
 
@@ -35,6 +90,7 @@ class BlogContainer extends Component{
         }
       });
       this.setState({flag:false})
+      textInput.setNativeProps({text: ''});
       
     }
   }

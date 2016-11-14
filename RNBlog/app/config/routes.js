@@ -13,6 +13,7 @@ import ChatView from '../routes/Chat/ChatView';
 import ProfileView from '../routes/Profile/ProfileView';
 import ProfileUpdate from '../routes/Profile/ProfileUpdate';
 
+
 export const routes = {
 	getHomeRoute(){
 		
@@ -115,10 +116,16 @@ export const routes = {
 	    };
   	},
   	getLogoutRoute() {
-
+  		Meteor.subscribe('users')
 	    return {
 		    renderScene(navigator) {
-		    	Meteor.logout();
+		    	Meteor.call('users.logout', function(err){
+		    		if(err)
+		    			alert(err.reason)
+		    	})
+				Meteor.logout();
+				
+		    	
 		        return <MenuContext style={{ flex: 1 }}>
 		        				<TopNavigation navigator={navigator} />
 		        				<Home navigator={navigator} />

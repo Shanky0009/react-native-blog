@@ -8,17 +8,41 @@ const cardSize = (window.width - (MARGIN_HORIZONTAL * 4)) / 2;
 
 export default StyleSheet.create({
 	container:{
-		flex:1,
-		justifyContent:'center',
-		alignItems:'center',
+		margin:20,
 	},
 	main:{
 		fontSize:20,
 		textAlign:'center',
-		color:'#eff0f1',
+		color:'#484040',
 		fontWeight:'400',
 		fontStyle:'italic',
-		width:400
+		marginTop:30,
+		marginLeft:10,
+		marginRight:10,
+	},
+	title:{
+		fontSize:20,
+		fontWeight:'400',
+		fontStyle:'italic',
+		backgroundColor:"#FFFFFF",
+		textAlign:'center',
+		height:70,
+		marginTop:50,
+		borderTopLeftRadius:6,
+		borderTopRightRadius:6,
+		backgroundColor:'rgba(212, 156, 32, 0.47)',
+	},
+	content:{
+		fontSize:20,
+		fontWeight:'300',
+		fontStyle:'italic',
+		backgroundColor:"#FFFFFF",
+		textAlign:'center',
+		height:70,
+		marginBottom:50,
+		borderBottomLeftRadius:6,
+		borderBottomRightRadius:6,
+		backgroundColor:'rgba(212, 156, 32, 0.47)',
 	},
 	backgroundImage: {
 	    flex: 1,

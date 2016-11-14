@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, TextInput, Image, View, TouchableOpacity } from 'react-native';
+import {Text, TextInput, Image, View, TouchableOpacity, ScrollView } from 'react-native';
 import Meteor, {MeteorListView, MeteorComplexListView} from 'react-native-meteor';
 
 import styles from './styles';
@@ -13,6 +13,15 @@ const ChatView = (props) => {
 			style={styles.backgroundImage}
 		>
 			{props.chats?
+				<ScrollView 
+					ref={(scrollView) =>  this.scroller = scrollView}
+			        automaticallyAdjustContentInsets={false}
+			        onScroll={() => { console.log('onScroll!'); }}
+			        scrollEventThrottle={200}
+			        onScroll={props.handleScroll}
+			        onLayout={props.handleLayout}
+			        onContentSizeChange={props.handleContentChange}
+			        >
 				<MeteorComplexListView
 					contentContainerStyle={styles.list}
 			        keyboardShouldPersistTaps={true}
@@ -23,19 +32,20 @@ const ChatView = (props) => {
 			        	{chats.sender==Meteor.user().username?
 			        		<View style={styles.chatMessage}>
 			        		<View style={styles.chatMessage1}>
-			        			<Text >{chats.sender}</Text>
-			        			<Text >{chats.chatMessage}</Text>
+			        			<Text style={styles.message}>{chats.sender}</Text>
+			        			<Text style={styles.message}>{chats.chatMessage}</Text>
 			        		</View>
 			        		</View>	
 			        	:
 			        		<View style={styles.chatMessage2}>
-			        			<Text >{chats.sender}</Text>
-			        			<Text >{chats.chatMessage}</Text>
+			        			<Text style={styles.message}>{chats.sender}</Text>
+			        			<Text style={styles.message}>{chats.chatMessage}</Text>
 			        		</View>
 			        	}		
 			        	</View>
 			        }	
 				/>
+				</ScrollView>
 			:
 				<View >
         			<Text style={styles.chatButton}>No chats yet....</Text>
@@ -49,6 +59,7 @@ const ChatView = (props) => {
 					placeholder="Enter your message......."
 			        autoCapitalize="none"
 			        autoCorrect={false}
+			        ref={component => this.textInput = component}
 			        onChangeText={(msg) => updateState({ msg })}
 			        style={styles.main}
 			    />

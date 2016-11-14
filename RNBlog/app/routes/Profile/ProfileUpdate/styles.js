@@ -4,16 +4,39 @@ import {colors} from '../../../config/styles';
 
 export default StyleSheet.create({
 	container:{
-		marginTop:10,
-		marginBottom:10,
-		height:60
+		
+		margin:20
 	},
 	main:{
 		fontSize:20,
 		fontWeight:'300',
 		fontStyle:'italic',
 		backgroundColor:"#FFFFFF",
-		borderRadius:10
+		textAlign:'center',
+		height:70,
+		backgroundColor:'rgba(212, 156, 32, 0.47)',
+	},
+	main1:{
+		fontSize:20,
+		fontWeight:'300',
+		fontStyle:'italic',
+		backgroundColor:"#FFFFFF",
+		textAlign:'center',
+		height:70,
+		borderTopLeftRadius:6,
+		borderTopRightRadius:6,
+		backgroundColor:'rgba(212, 156, 32, 0.47)',
+	},
+	main2:{
+		fontSize:20,
+		fontWeight:'300',
+		fontStyle:'italic',
+		backgroundColor:"#FFFFFF",
+		textAlign:'center',
+		height:70,
+		borderBottomLeftRadius:6,
+		borderBottomRightRadius:6,
+		backgroundColor:'rgba(212, 156, 32, 0.47)',
 	},
 	backgroundImage: {
 	    flex: 1,
@@ -21,18 +44,18 @@ export default StyleSheet.create({
     	height: null,
   	},
   	header:{
-  		color:"#FFFFFF",
+  		color:"#484040",
   		textAlign:"center",
   		fontSize:20,
   		paddingBottom:10,
   		paddingTop:10
   	},
   	button:{
-  		width:350,
+  		width:318,
   		paddingVertical: 10,
 	    paddingHorizontal: 20,
 	    margin: 5,
-		backgroundColor:'#ef553a',
+		backgroundColor:'#2b2926',
 		alignItems: 'center',
 		justifyContent: 'center',
 		borderRadius:10,

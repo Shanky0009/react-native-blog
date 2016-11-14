@@ -17,7 +17,8 @@ Meteor.methods({
 			title: title,
 			content:content,
 			owner:userId,
-			ownerName:Meteor.user().username
+			ownerName:Meteor.user().username,
+			createdAt: new Date()
 		}
 		console.log(blogData)
 		Blogs.insert( blogData, function(error, result) {
@@ -51,7 +52,8 @@ Meteor.methods({
 					blogId:blogId, 
 					blogOwner:blogOwner,
 					commentOwner:commentOwner,
-					ownerName:ownerName 
+					ownerName:ownerName,
+					createdAt:new Date() 
 				}  
 			}
 		},{ 

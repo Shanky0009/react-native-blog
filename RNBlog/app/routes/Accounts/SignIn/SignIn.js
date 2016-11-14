@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { MenuContext } from 'react-native-menu';
 
@@ -16,6 +16,14 @@ const SignIn = (props) => {
 		<Image 
 			style={styles.backgroundImage}
        		source={images.backGround} >
+       		<ScrollView 
+				ref={(scrollView) =>  this.scroller = scrollView}
+		        automaticallyAdjustContentInsets={false}
+		        onScroll={() => { console.log('onScroll!'); }}
+		        scrollEventThrottle={200}
+		        onScroll={props.handleScroll}
+		        onLayout={props.handleLayout}
+		        >
 			<View>
 				<View>
 					<Text style={styles.header}>
@@ -29,16 +37,14 @@ const SignIn = (props) => {
 				        autoCapitalize="none"
 				        autoCorrect={false}
 				        onChangeText={(email) => updateState({ email })}
-				        style={styles.main}
+				        style={styles.email}
 				      />
-				</View>      
-				<View style={styles.container}>
 				     <TextInput
 				     	placeholder="Password"
 				     	autoCorrect={false}
 				     	autoCapitalize="none"
 				     	onChangeText={(password) => updateState({password})}
-				     	style={styles.main}
+				     	style={styles.pass}
 				     />
 				</View>
 				
@@ -48,8 +54,8 @@ const SignIn = (props) => {
 				        	Sign In
 				      	</Text>
 				    </TouchableOpacity>
-				    <Text style={styles.buttonText}>
-				    	Or
+				    <Text style={styles.or}>
+				    	or
 				    </Text>
 					<TouchableOpacity style={styles.button} onPress={createAccount}>
 				      	<Text style={styles.buttonText} >
@@ -60,6 +66,7 @@ const SignIn = (props) => {
 				
 				<KeyboardSpacer />
 			</View>	
+			</ScrollView>	
 		</Image>
 	)
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TextInput, Image, TouchableOpacity} from 'react-native'
+import {Text, View, TextInput, Image, TouchableOpacity, ScrollView} from 'react-native'
 import FileInput from 'react-file-input';
 import images from '../../../config/images';
 import styles from './styles';  
@@ -11,6 +11,13 @@ const ProfileUpdate = (props) => {
 			style={styles.backgroundImage}
 			source={images.backGround}
 		>
+			<ScrollView 
+				ref={(scrollView) =>  this.scroller = scrollView}
+		        automaticallyAdjustContentInsets={false}
+		        scrollEventThrottle={200}
+		        onScroll={props.handleScroll}
+		        onLayout={props.handleLayout}
+		        >
 			<View>
 				<Text style={styles.header}>
 					Update Your Profile....!!!
@@ -59,31 +66,25 @@ const ProfileUpdate = (props) => {
 						placeholder="First Name"
 						defaultValue={profile.firstName}
 				        onChangeText={(firstName) => updateState({ firstName })}
-				        style={styles.main}
+				        style={styles.main1}
 					/>
-				</View>
-				<View style={styles.container}>
 					<TextInput 
 						placeholder="Last Name"
 						defaultValue={profile.lastName}
 				        onChangeText={(lastName) => updateState({ lastName })}
 				        style={styles.main}
 					/>
-				</View>
-				<View style={styles.container}>
 					<TextInput 
 						placeholder="Address"
 						defaultValue={profile.address}
 				        onChangeText={(address) => updateState({ address })}
 				        style={styles.main}
 					/>
-				</View>
-				<View style={styles.container}>
 					<TextInput 
 						placeholder="Phone Number"
 						defaultValue={profile.phnNo}
 				        onChangeText={(phnNo) => updateState({ phnNo })}
-				        style={styles.main}
+				        style={styles.main2}
 					/>
 
 				</View>
@@ -96,6 +97,7 @@ const ProfileUpdate = (props) => {
 					</TouchableOpacity>
 				</View>		
 			</View>
+			</ScrollView>
 		</Image>			
 	)
 }

@@ -22,4 +22,19 @@ Meteor.methods({
 		});
 			
 	},
+	'users.sessionUpdate'(){
+		Meteor.users.update({_id:this.userId},{
+			$set: {
+				session:'available'
+			}
+		})
+	},
+	'users.logout'(){
+		console.log(this.userId)
+		Meteor.users.update({_id:this.userId},{
+			$set: {
+				session:'unavailable'
+			}
+		})
+	}
 })

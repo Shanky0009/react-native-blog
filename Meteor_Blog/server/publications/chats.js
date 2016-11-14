@@ -20,7 +20,8 @@ Meteor.methods({
 		let talks={
 			chatMessage:chatMessage,
 			sender:currentUser.username,
-			receiver:user.username
+			receiver:user.username,
+			createdAt:new Date()
 		};
 
 		chatData = {

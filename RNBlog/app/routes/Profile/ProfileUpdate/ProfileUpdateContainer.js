@@ -1,7 +1,6 @@
 import React, { Component , PropTypes } from 'react';
-import Platform from 'react-native';
+import {Platform, Keyboard} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
-// var ImagePicker = require('react-native-image-picker');
 import Meteor, { createContainer } from 'react-native-meteor';
 
 import Routes from '../../../config/routes';
@@ -17,9 +16,66 @@ class ProfileUpdateContainer extends Component{
 			address:'',
 			phnNo:'',
 		}
+
+	    ;[
+	        'handleKeyboardShow', 'handleKeyboardHide',
+	        'handleLayout', 'handleScroll',
+	    ].forEach((method) => {
+	        this[method] = this[method].bind(this)
+	    })
+
+	    let scroller = null;
 	}
 
+	componentDidMount () {
+	      Keyboard.addListener('keyboardDidShow', this.handleKeyboardShow)
+	      Keyboard.addListener('keyboardDidHide', this.handleKeyboardHide)
+	}
+	  
+	componentWillUnmount () {
+	    Keyboard.removeListener('keyboardDidShow', this.handleKeyboardShow)
+	    Keyboard.removeListener('keyboardDidHide', this.handleKeyboardHide)
+	}
+
+	handleKeyboardShow () {
+	    this.scrollToBottom()
+	}
+	  
+	handleKeyboardHide () {
+	    const { scrollY, scrollHeight, contentHeight } = this
+
+	    if (Platform.OS === 'ios') {
+	        if (scrollY > contentHeight - scrollHeight) {
+	            scroller.scrollTo({ y: 0 })
+	        }
+	        // fix bottom blank if exsits
+	        // else {
+	        //   this.scrollToBottom()
+	        // }
+	        else {
+	            scroller.scrollTo({ y: scrollY })
+	        }
+	    }
+	}
+
+	handleScroll (e) {
+	    this.scrollY = e.nativeEvent.contentOffset.y
+	}
 	
+	handleLayout (e) {
+	    this.scrollHeight = e.nativeEvent.layout.height
+	}
+
+	scrollToBottom () {
+	    const { scrollHeight, contentHeight } = this
+	    if (scrollHeight == null) {
+	        return
+	    }
+	    if (contentHeight > scrollHeight) {
+	        scroller.scrollTo({ y: contentHeight - scrollHeight })
+	    }
+	}
+
 
 	uploadPress(){
 		var options = {
@@ -99,6 +155,8 @@ class ProfileUpdateContainer extends Component{
 				profilePic={this.setState.bind(this)}
 				uploadPress={this.uploadPress.bind(this)}
 				profile={this.props.profile}
+				handleScroll={this.handleScroll.bind(this)}
+		        handleLayout={this.handleLayout.bind(this)}
 				{...this.state}
 			/>	
 		)

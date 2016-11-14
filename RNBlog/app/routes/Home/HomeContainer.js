@@ -14,10 +14,16 @@ const HomeContainer = (props) => {
 };
 
 export default createContainer(() => {
+	Meteor.subscribe('users')
+
 	if(!Meteor.user()){
 		user = ''
 	} else {
 		user = Meteor.user();
+		Meteor.call('users.sessionUpdate', function(err){
+			if(err)
+				console.log("err",err)
+		})
 	}
   return {
     user: user,

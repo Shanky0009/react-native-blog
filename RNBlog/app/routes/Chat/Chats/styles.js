@@ -12,7 +12,7 @@ export default StyleSheet.create({
 	main:{
 		fontSize:20,
 		textAlign:'center',
-		color:'#eff0f1',
+		color:'#484040',
 		fontWeight:'400',
 		fontStyle:'italic',
 	},
@@ -21,11 +21,12 @@ export default StyleSheet.create({
 	    width: null,
     	height: null,
   	},
-  	header: {
-	    marginBottom: 25,
-	    alignItems: 'center',
-	    textAlign:'center',
-	    color:"#FFFFFF"
+  	header:{
+  		color:"#484040",
+  		textAlign:"center",
+  		fontSize:20,
+  		paddingBottom:10,
+  		paddingTop:10
   	},
   	list: {
   		flexDirection: 'column',
@@ -35,19 +36,46 @@ export default StyleSheet.create({
         alignItems:'center',
 	 },
 	item: {
-	    backgroundColor:'#ef553a',
-        width:550,
+	    backgroundColor:'#2b2926',
+	    alignSelf:'stretch',
         paddingTop:10,
-        paddingBottom:20,
-        // paddingLeft:20,
+        paddingBottom:10,
+        paddingLeft:20,
         // paddingRight:20, 
         marginBottom:10,
-        borderRadius:3
+        borderRadius:3,
+        
 	},
 	chatButton: {
 	    color: '#fff',
 	    fontSize: 16,
 	    fontWeight: '500',
-	    textAlign:'center',
+	    textAlign:'left',
 	},
+	chatTouch:{
+		flexDirection:'row',
+		justifyContent:'flex-start'
+	},
+	chatDp:{
+		width:40,
+		height:40,
+		borderRadius:20,
+		paddingRight:5,
+		marginLeft:5,
+	},
+	chatUser:{
+		marginLeft:10,
+		width:250
+	},
+	availability:{
+		flexDirection:'column',
+		alignItems:'flex-end',
+		justifyContent:'center',
+	},
+	chatAvailability:{
+		width:10,
+		height:10,
+		borderRadius:30,
+		alignSelf:'flex-end'
+	}
 });

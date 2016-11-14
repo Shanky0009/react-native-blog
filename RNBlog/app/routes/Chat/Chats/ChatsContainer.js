@@ -11,18 +11,19 @@ class ChatsContainer extends Component{
 	}
 
 	onOpenChat(user){
-		console.log("ok")
-		// return(
-		// 	<ChatView user={Meteor.user()} />
-		// )
-		this.props.navigator.resetTo(Routes.getChatViewRoute(user))
-		
+		this.props.navigator.resetTo(Routes.getChatViewRoute(user))		
+	}
+
+	renderChatDetails(id){
+		console.log("id",id+Meteor.userId(), Meteor.userId()+id)
+		console.log(Meteor.collection('chats').find())
 	}
 
 	render(){
 		return(
 			<Chats
 				onOpenChat={(user) => this.onOpenChat(user)}
+				renderChatDetails={(id) => this.renderChatDetails(id)}
 			/>	
 		)
 	}
