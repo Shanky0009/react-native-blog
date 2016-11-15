@@ -1,6 +1,8 @@
+/*********************************Sign In react-native component & container*****************************/
 import React, { Component } from 'react';
 import { LayoutAnimation, Keyboard, Platform } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
+
 import Routes from '../../../config/routes';
 import SignIn from './SignIn';
 
@@ -13,11 +15,10 @@ class SignInContainer extends Component {
       email: '',
       password: '',
       error: null,
+      contentHeight: null,
+      scrollHeight: null,
+      scrollY: null,
     };
-
-    this.contentHeight = null
-    this.scrollHeight = null
-    this.scrollY = null
 
     ;[
       'handleKeyboardShow', 'handleKeyboardHide',
@@ -100,7 +101,6 @@ class SignInContainer extends Component {
     if (valid) {
       this.handleError(null);
     }
-
     return valid;
   }
 
@@ -126,6 +126,6 @@ class SignInContainer extends Component {
       />
     );
   }
-}
+};
 
 export default SignInContainer;

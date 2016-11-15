@@ -1,3 +1,4 @@
+/****************************Profile View react-native component view*****************************/
 import React from 'react';
 import {Text, View, Image} from 'react-native';
 import Meteor from 'react-native-meteor';

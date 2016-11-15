@@ -1,3 +1,4 @@
+/*********************************Chat messages react-native component & container*****************************/
 import React, { Component } from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
 import { Keyboard, Platform } from 'react-native'
@@ -8,22 +9,20 @@ class ChatViewContainer extends Component{
 	constructor(props){
 		super(props)
 		this.state={
-			msg:''
+			msg:'',
+			contentHeight: null,
+		    scrollHeight: null,
+		    scrollY: null,
 		}
-
-		this.contentHeight = null
-	    this.scrollHeight = null
-	    this.scrollY = null
 
 	    ;[
 	      'handleKeyboardShow', 'handleKeyboardHide',
 	      'handleLayout', 'handleContentChange', 'handleScroll',
 	    ].forEach((method) => {
-	      this[method] = this[method].bind(this)
+	      this[method] = this[method].bind(this);
 	    })
 
-	    let scroller = null;
-	    let textInput = null;
+	    let scroller = null, textInput = null;
 	}
 
 	submitChat(){
@@ -31,10 +30,9 @@ class ChatViewContainer extends Component{
           user = this.props.user;
           message = this.state.msg;
          
-         console.log(currentUser._id, user._id, message) 
           Meteor.call('users.chat', message, user, currentUser , function(err){
             if(err){
-              alert(err.reason)
+              alert(err.reason);
             }
           });
         this.setState({msg:''});
@@ -42,17 +40,17 @@ class ChatViewContainer extends Component{
 	}
 
 	componentDidMount () {
-	    Keyboard.addListener('keyboardDidShow', this.handleKeyboardShow)
-	    Keyboard.addListener('keyboardDidHide', this.handleKeyboardHide)
+	    Keyboard.addListener('keyboardDidShow', this.handleKeyboardShow);
+	    Keyboard.addListener('keyboardDidHide', this.handleKeyboardHide);
 	}
 	
 	componentWillUnmount () {
-	    Keyboard.removeListener('keyboardDidShow', this.handleKeyboardShow)
-	    Keyboard.removeListener('keyboardDidHide', this.handleKeyboardHide)
+	    Keyboard.removeListener('keyboardDidShow', this.handleKeyboardShow);
+	    Keyboard.removeListener('keyboardDidHide', this.handleKeyboardHide);
 	}
 
 	handleKeyboardShow () {
-	    this.scrollToBottom()
+	    this.scrollToBottom();
 	}
 	
 	handleKeyboardHide () {
@@ -60,50 +58,45 @@ class ChatViewContainer extends Component{
 
 	    if (Platform.OS === 'ios') {
 	      	if (scrollY > contentHeight - scrollHeight) {
-	        	scroller.scrollTo({ y: 0 })
-	      	}
-	      // fix bottom blank if exsits
-	      // else {
-	      //   this.scrollToBottom()
-	      // }
-	      	else {
-	        	scroller.scrollTo({ y: scrollY })
+	        	scroller.scrollTo({ y: 0 });
+	      	} else {
+	        	scroller.scrollTo({ y: scrollY });
 		    }
 	    }
 	}
 
 	handleScroll (e) {
-	    this.scrollY = e.nativeEvent.contentOffset.y
+	    this.scrollY = e.nativeEvent.contentOffset.y;
 	}
 	handleLayout (e) {
-	    this.scrollHeight = e.nativeEvent.layout.height
+	    this.scrollHeight = e.nativeEvent.layout.height;
 	}
 
 	handleContentChange (w, h) {
 	    if (h === this.contentHeight) return
-	    this.contentHeight = h
+	    this.contentHeight = h;
 
 	    if (this.scrollHeight == null) {
 	      setTimeout(() => {
-	        this.scrollToBottomIfNecessary()
+	        this.scrollToBottomIfNecessary();
 	      }, 500)
 	    }
 	    else {
-	      this.scrollToBottomIfNecessary()
+	      this.scrollToBottomIfNecessary();
 	    }
 	}
 
 	scrollToBottomIfNecessary () {
-	    this.scrollToBottom()
+	    this.scrollToBottom();
 	}
 	
 	scrollToBottom () {
-	    const { scrollHeight, contentHeight } = this
+	    const { scrollHeight, contentHeight } = this;
 	    if (scrollHeight == null) {
 	      return
 	    }
 	    if (contentHeight > scrollHeight) {
-	      scroller.scrollTo({ y: contentHeight - scrollHeight })
+	      scroller.scrollTo({ y: contentHeight - scrollHeight });
 	    }
 	}
 
@@ -125,8 +118,8 @@ class ChatViewContainer extends Component{
 }
 
 export default createContainer(() => {
-	Meteor.subscribe('users')
-	var chatHandle = Meteor.subscribe('chats')
+	Meteor.subscribe('users');
+	var chatHandle = Meteor.subscribe('chats');
 	
 	return {
 		chatHandle:chatHandle.ready(),

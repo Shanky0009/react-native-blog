@@ -1,3 +1,4 @@
+/************************************Home react-native component view**********************************/
 import React, { PropTypes } from 'react';
 import { Text, View, Image } from 'react-native';
 
@@ -8,17 +9,14 @@ import styles from './styles';
 
 const Home = (props) =>{
 	const {user} = props;
-
 	return(	
 		<Image 
 			style={styles.backgroundImage}
        		source={images.backGround} >
-
 			<View style={styles.container}>
           		<Text style={styles.main}>
 					Welcome to blogger's Blog!!! 
 				</Text>
-				
 				{user?
 					<Button
 						text = "Logout"
@@ -34,7 +32,5 @@ const Home = (props) =>{
 		</Image>
 	);
 };
-
-
 
 export default Home;

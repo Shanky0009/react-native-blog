@@ -1,3 +1,4 @@
+/*********************************Profile Update react-native component view*****************************/
 import React from 'react';
 import {Text, View, TextInput, Image, TouchableOpacity, ScrollView} from 'react-native'
 import FileInput from 'react-file-input';
@@ -23,14 +24,12 @@ const ProfileUpdate = (props) => {
 					Update Your Profile....!!!
 				</Text>
 			</View>
-
 			<View>
 				<View style={styles.profilePicView}>
 				{profile.profilePic?
 					<Image
 						source={profilePic} 
 						style={styles.profilePic}>
-						
 							<TouchableOpacity
 								style={styles.profilePicButton}
 								onPress={props.uploadPress}
@@ -39,7 +38,6 @@ const ProfileUpdate = (props) => {
 									source={images.camera}
 									style={styles.profilePicButtonImage} />
 							</TouchableOpacity>
-						
 					</Image>
 				:
 					<Image
@@ -57,10 +55,7 @@ const ProfileUpdate = (props) => {
 						</View>
 					</Image>
 				}
-						
 				</View>
-
-
 				<View style={styles.container}>
 					<TextInput 
 						placeholder="First Name"

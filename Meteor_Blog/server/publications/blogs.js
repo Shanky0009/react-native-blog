@@ -1,12 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { Blogs } from '../../lib/collections';
 
+//publication for blogs
 export default () => {
 	Meteor.publish('blogs', () => {
 		return Blogs.find();
 	});
 }
 
+//methods for blog insertion, updation and deletion
 Meteor.methods({
 	'blogs.addEdit'(title, content, userId){
 		if(! this.userId){
@@ -20,9 +22,7 @@ Meteor.methods({
 			ownerName:Meteor.user().username,
 			createdAt: new Date()
 		}
-		console.log(blogData)
 		Blogs.insert( blogData, function(error, result) {
-			console.log(result)
 			if(error){
 				throw Meteor.Error("Invalid Data");
 			}
@@ -39,7 +39,6 @@ Meteor.methods({
 		if(blog.owner == this.userId){
 			Blogs.remove(blogId);
 		} else {
-			console.log("out")
 			throw new Meteor.Error('not-authorized');
 		}	
 	},

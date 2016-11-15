@@ -32,7 +32,6 @@ export default StyleSheet.create({
   		flexDirection: 'column',
 	    flexWrap: 'wrap',
 	    justifyContent: 'center',
-	    // backgroundColor:'#ebeef0',
         alignItems:'center',
 	 },
 	item: {
@@ -41,9 +40,8 @@ export default StyleSheet.create({
         paddingTop:10,
         paddingBottom:10,
         paddingLeft:20,
-        // paddingRight:20, 
-        marginBottom:10,
-        borderRadius:3,
+        borderBottomWidth: 0.5,
+	    borderColor: '#ccc'
         
 	},
 	chatButton: {
@@ -54,7 +52,9 @@ export default StyleSheet.create({
 	},
 	chatTouch:{
 		flexDirection:'row',
-		justifyContent:'flex-start'
+	},
+	dp:{
+		alignSelf:'center',
 	},
 	chatDp:{
 		width:40,
@@ -65,12 +65,14 @@ export default StyleSheet.create({
 	},
 	chatUser:{
 		marginLeft:10,
-		width:250
+		alignSelf:'center',
+		flex:1
 	},
 	availability:{
-		flexDirection:'column',
-		alignItems:'flex-end',
+		// flexDirection:'column',
+		// alignItems:'flex-end',
 		justifyContent:'center',
+		margin:10
 	},
 	chatAvailability:{
 		width:10,

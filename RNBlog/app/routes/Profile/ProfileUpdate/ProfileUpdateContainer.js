@@ -1,3 +1,4 @@
+/****************************Profile Update react-native component & container*****************************/
 import React, { Component , PropTypes } from 'react';
 import {Platform, Keyboard} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
@@ -15,6 +16,9 @@ class ProfileUpdateContainer extends Component{
 			lastName:'',
 			address:'',
 			phnNo:'',
+			contentHeight: null,
+		    scrollHeight: null,
+		    scrollY: null,
 		}
 
 	    ;[
@@ -28,67 +32,61 @@ class ProfileUpdateContainer extends Component{
 	}
 
 	componentDidMount () {
-	      Keyboard.addListener('keyboardDidShow', this.handleKeyboardShow)
-	      Keyboard.addListener('keyboardDidHide', this.handleKeyboardHide)
+	      Keyboard.addListener('keyboardDidShow', this.handleKeyboardShow);
+	      Keyboard.addListener('keyboardDidHide', this.handleKeyboardHide);
 	}
 	  
 	componentWillUnmount () {
-	    Keyboard.removeListener('keyboardDidShow', this.handleKeyboardShow)
-	    Keyboard.removeListener('keyboardDidHide', this.handleKeyboardHide)
+	    Keyboard.removeListener('keyboardDidShow', this.handleKeyboardShow);
+	    Keyboard.removeListener('keyboardDidHide', this.handleKeyboardHide);
 	}
 
 	handleKeyboardShow () {
-	    this.scrollToBottom()
+	    this.scrollToBottom();
 	}
 	  
 	handleKeyboardHide () {
 	    const { scrollY, scrollHeight, contentHeight } = this
-
 	    if (Platform.OS === 'ios') {
 	        if (scrollY > contentHeight - scrollHeight) {
-	            scroller.scrollTo({ y: 0 })
-	        }
-	        // fix bottom blank if exsits
-	        // else {
-	        //   this.scrollToBottom()
-	        // }
-	        else {
-	            scroller.scrollTo({ y: scrollY })
+	            scroller.scrollTo({ y: 0 });
+	        } else {
+	            scroller.scrollTo({ y: scrollY });
 	        }
 	    }
 	}
 
 	handleScroll (e) {
-	    this.scrollY = e.nativeEvent.contentOffset.y
+	    this.scrollY = e.nativeEvent.contentOffset.y;
 	}
 	
 	handleLayout (e) {
-	    this.scrollHeight = e.nativeEvent.layout.height
+	    this.scrollHeight = e.nativeEvent.layout.height;
 	}
 
 	scrollToBottom () {
-	    const { scrollHeight, contentHeight } = this
+	    const { scrollHeight, contentHeight } = this;
 	    if (scrollHeight == null) {
 	        return
 	    }
 	    if (contentHeight > scrollHeight) {
-	        scroller.scrollTo({ y: contentHeight - scrollHeight })
+	        scroller.scrollTo({ y: contentHeight - scrollHeight });
 	    }
 	}
 
 
 	uploadPress(){
 		var options = {
-		  title: 'Photo Picker',
-	      takePhotoButtonTitle: 'Take Photo...',
-	      chooseFromLibraryButtonTitle: 'Choose from Library...',
-	      quality: 0.5,
-	      maxWidth: 300,
-	      maxHeight: 300,
-	      allowsEditing: true,
-	      storageOptions: {
-	        skipBackup: true
-	      }
+			title: 'Photo Picker',
+		    takePhotoButtonTitle: 'Take Photo...',
+		    chooseFromLibraryButtonTitle: 'Choose from Library...',
+		    quality: 0.5,
+		    maxWidth: 300,
+		    maxHeight: 300,
+		    allowsEditing: true,
+		    storageOptions: {
+		    	skipBackup: true
+			}
 		};
 
 		ImagePicker.showImagePicker(options, (response)  => {
@@ -123,26 +121,25 @@ class ProfileUpdateContainer extends Component{
 
 	onProfileUpdatePress(event){
 		event.preventDefault();
-	 	console.log(this.state)
 	 	Meteor.call('users.profileUpdate', this.state, (err) => {
 	 		if(err)
-	 			alert(err.reason)
+	 			alert(err.reason);
 	 		else
-	 			this.props.navigator.resetTo(Routes.getProfileViewRoute())
+	 			this.props.navigator.resetTo(Routes.getProfileViewRoute());
 	 	});
 	}
 
 	componentWillReceiveProps(nextProps){
 		if(this.props.profile){
-			this.setState(this.props.profile)	
+			this.setState(this.props.profile);	
 		}
 	}
 
 	shouldComponentUpdate(nextProps, nextState){
 		if(nextProps.profile.profilePic != nextState.profilePic){
-			return true
+			return true;
 		} else {
-			return false
+			return false;
 		}
 	}
 

@@ -1,12 +1,15 @@
+/*****************************************Routing for whole app***************************************/
 import React from 'react';
 import Meteor from 'react-native-meteor';
 import { MenuContext } from 'react-native-menu';
+
 
 import TopNavigation from '../layouts/TopNavigation';
 import Home from '../routes/Home';
 import SignIn from '../routes/Accounts/SignIn';
 import SignUp from '../routes/Accounts/SignUp';
 import Blog from '../routes/Blog/Blogs';
+import OneBlog from '../routes/Blog/OneBlog';
 import AddBlog from '../routes/Blog/AddBlog';
 import Chats from '../routes/Chat/Chats';
 import ChatView from '../routes/Chat/ChatView';
@@ -14,9 +17,9 @@ import ProfileView from '../routes/Profile/ProfileView';
 import ProfileUpdate from '../routes/Profile/ProfileUpdate';
 
 
+//route scenes defined for every route in the app
 export const routes = {
 	getHomeRoute(){
-		
 		return{
 			renderScene(navigator){
 				return <MenuContext style={{ flex: 1 }}>
@@ -60,6 +63,17 @@ export const routes = {
 		    showNavigationBar: false,
 	    };
   	},
+  	getOneBlogRoute(blogId) {
+	    return {
+		    renderScene(navigator) {
+		        return <MenuContext style={{ flex: 1 }}>
+					        <TopNavigation navigator={navigator} />
+					        <OneBlog navigator={navigator} blogId={blogId} />
+					    </MenuContext>;
+		    },
+		    showNavigationBar: false,
+	    };
+  	},
 	getAddBlogRoute() {
 	    return {
 		    renderScene(navigator) {
@@ -93,12 +107,12 @@ export const routes = {
 		    showNavigationBar: false,
 	    };
   	},
-  	getProfileViewRoute() {
+  	getProfileViewRoute(userId) {
 	    return {
 		    renderScene(navigator) {
 		        return <MenuContext style={{ flex: 1 }}>
 					        <TopNavigation navigator={navigator} />
-					        <ProfileView navigator={navigator} />
+					        <ProfileView navigator={navigator} userId={userId} />
 					    </MenuContext>;
 		    },
 		    showNavigationBar: false,
@@ -124,12 +138,10 @@ export const routes = {
 		    			alert(err.reason)
 		    	})
 				Meteor.logout();
-				
-		    	
 		        return <MenuContext style={{ flex: 1 }}>
-		        				<TopNavigation navigator={navigator} />
-		        				<Home navigator={navigator} />
-		        			</MenuContext>;
+	        				<TopNavigation navigator={navigator} />
+	        				<Home navigator={navigator} />
+	        			</MenuContext>;
 		    },
 	    };
   	},

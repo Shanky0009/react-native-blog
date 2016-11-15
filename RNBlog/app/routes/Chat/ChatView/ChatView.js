@@ -1,3 +1,4 @@
+/*********************************Chat messages react-native component view*****************************/
 import React from 'react';
 import {Text, TextInput, Image, View, TouchableOpacity, ScrollView } from 'react-native';
 import Meteor, {MeteorListView, MeteorComplexListView} from 'react-native-meteor';
@@ -47,14 +48,12 @@ const ChatView = (props) => {
 				/>
 				</ScrollView>
 			:
-				<View >
+				<View style={styles.noChat}>
         			<Text style={styles.chatButton}>No chats yet....</Text>
         		</View>
-			
 			}
 			
-			
-			<View >
+			<View style={styles.msgEnter}>
 				<TextInput
 					placeholder="Enter your message......."
 			        autoCapitalize="none"

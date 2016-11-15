@@ -1,3 +1,4 @@
+/*********************************Sign Up react-native component & container*****************************/
 import React, { Component } from 'react';
 import { LayoutAnimation, Keyboard, Platform } from 'react-native';
 import Meteor, { Accounts } from 'react-native-meteor';
@@ -7,23 +8,21 @@ import SignUp from './SignUp';
 class SignUpContainer extends Component {
   constructor(props) {
     super(props);
-
     this.mounted = false;
     this.state = {
       email: '',
       password: '',
       error: null,
+      contentHeight: null,
+      scrollHeight: null,
+      scrollY: null,
     };
-
-    this.contentHeight = null
-      this.scrollHeight = null
-      this.scrollY = null
 
     ;[
       'handleKeyboardShow', 'handleKeyboardHide',
       'handleLayout', 'handleScroll',
     ].forEach((method) => {
-      this[method] = this[method].bind(this)
+      this[method] = this[method].bind(this);
     })
 
     let scroller = null;
@@ -38,46 +37,45 @@ class SignUpContainer extends Component {
   }
 
   componentDidMount () {
-    Keyboard.addListener('keyboardDidShow', this.handleKeyboardShow)
-    Keyboard.addListener('keyboardDidHide', this.handleKeyboardHide)
+    Keyboard.addListener('keyboardDidShow', this.handleKeyboardShow);
+    Keyboard.addListener('keyboardDidHide', this.handleKeyboardHide);
   }
   
   componentWillUnmount () {
-    Keyboard.removeListener('keyboardDidShow', this.handleKeyboardShow)
-    Keyboard.removeListener('keyboardDidHide', this.handleKeyboardHide)
+    Keyboard.removeListener('keyboardDidShow', this.handleKeyboardShow);
+    Keyboard.removeListener('keyboardDidHide', this.handleKeyboardHide);
   }
 
   handleKeyboardShow () {
-      this.scrollToBottom()
+      this.scrollToBottom();
   }
   
   handleKeyboardHide () {
-    const { scrollY, scrollHeight, contentHeight } = this
-
+    const { scrollY, scrollHeight, contentHeight } = this;
     if (Platform.OS === 'ios') {
         if (scrollY > contentHeight - scrollHeight) {
-          scroller.scrollTo({ y: 0 })
+          scroller.scrollTo({ y: 0 });
         }
         else {
-          scroller.scrollTo({ y: scrollY })
+          scroller.scrollTo({ y: scrollY });
       }
     }
   }
 
   handleScroll (e) {
-    this.scrollY = e.nativeEvent.contentOffset.y
+    this.scrollY = e.nativeEvent.contentOffset.y;
   }
   handleLayout (e) {
-    this.scrollHeight = e.nativeEvent.layout.height
+    this.scrollHeight = e.nativeEvent.layout.height;
   }
   
   scrollToBottom () {
-      const { scrollHeight, contentHeight } = this
+      const { scrollHeight, contentHeight } = this;
       if (scrollHeight == null) {
         return
       }
       if (contentHeight > scrollHeight) {
-        scroller.scrollTo({ y: contentHeight - scrollHeight })
+        scroller.scrollTo({ y: contentHeight - scrollHeight });
       }
   }
 
@@ -111,20 +109,17 @@ class SignUpContainer extends Component {
           alert(err.reason);
         }
       });
-      this.props.navigator.resetTo(Routes.getHomeRoute())
+      this.props.navigator.resetTo(Routes.getHomeRoute());
     }
   }
 
   handleCreateAccount() {
     const { username, email, password } = this.state;
-    console.log(email, password);
     if (this.validInput()) {
-      
       Accounts.createUser({ username, email, password }, function(err) {
         if (err) {
           alert(err.reason);
         } else {
-          console.log("SignUp")
           this.handleSignUp();
         }
       });
@@ -142,6 +137,6 @@ class SignUpContainer extends Component {
       />
     );
   }
-}
+};
 
 export default SignUpContainer;

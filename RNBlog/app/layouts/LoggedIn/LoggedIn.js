@@ -1,3 +1,4 @@
+/******************************************Layout for logged in users********************************************/
 import React from 'react';
 import Meteor , { createContainer } from 'react-native-meteor';
 import TabNavigator from 'react-native-tab-navigator';

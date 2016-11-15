@@ -5,7 +5,7 @@ import './publications/blogs.js';
 import './publications/profiles.js';
 import './publications/chats.js';
 
-
+//publishing all collections at startup
 Meteor.startup(() => {
   publications();
 });

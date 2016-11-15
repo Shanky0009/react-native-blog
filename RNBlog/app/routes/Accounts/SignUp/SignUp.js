@@ -1,3 +1,4 @@
+/*********************************Sign Up react-native component view*****************************/
 import React from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
@@ -11,7 +12,6 @@ import styles from './styles';
 
 const SignUp = (props) => {
 	const {updateState, createAccount, error } = props;
-
 	return (
 		<Image 
 			style={styles.backgroundImage}
@@ -61,13 +61,12 @@ const SignUp = (props) => {
 				        	Create Account
 				      	</Text>
 				    </TouchableOpacity>    
-				</View>
-				
+				</View>	
 				<KeyboardSpacer />
 			</View>
 			</ScrollView>	
 		</Image>
-	)
+	);
 };
 
 export default SignUp;

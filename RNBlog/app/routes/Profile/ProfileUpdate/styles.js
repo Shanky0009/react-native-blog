@@ -14,7 +14,7 @@ export default StyleSheet.create({
 		backgroundColor:"#FFFFFF",
 		textAlign:'center',
 		height:70,
-		backgroundColor:'rgba(212, 156, 32, 0.47)',
+		backgroundColor:'rgba(51, 39, 39, 0.20)',
 	},
 	main1:{
 		fontSize:20,
@@ -25,7 +25,7 @@ export default StyleSheet.create({
 		height:70,
 		borderTopLeftRadius:6,
 		borderTopRightRadius:6,
-		backgroundColor:'rgba(212, 156, 32, 0.47)',
+		backgroundColor:'rgba(51, 39, 39, 0.20)',
 	},
 	main2:{
 		fontSize:20,
@@ -36,7 +36,7 @@ export default StyleSheet.create({
 		height:70,
 		borderBottomLeftRadius:6,
 		borderBottomRightRadius:6,
-		backgroundColor:'rgba(212, 156, 32, 0.47)',
+		backgroundColor:'rgba(51, 39, 39, 0.20)',
 	},
 	backgroundImage: {
 	    flex: 1,

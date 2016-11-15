@@ -1,3 +1,4 @@
+/****************************Main react-native component & container*****************************/
 import React, {Component} from 'react';
 import Meteor, { createContainer } from 'react-native-meteor';
 import { MenuContext } from 'react-native-menu';

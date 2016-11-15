@@ -1,3 +1,4 @@
+/*********************************Add Blog react-native component view*****************************/
 import React, { PropTypes } from 'react';
 import { Text, View, Image, TextInput, ScrollView } from 'react-native';
 
@@ -11,8 +12,8 @@ const AddBlog = (props) =>{
 	return(
 		<Image 
 			style={styles.backgroundImage}
-       		source={images.backGround} >
-
+       		source={images.backGround} 
+       	>
        		<ScrollView 
 					ref={(scrollView) =>  this.scroller = scrollView}
 			        automaticallyAdjustContentInsets={false}
@@ -25,10 +26,6 @@ const AddBlog = (props) =>{
           		<Text style={styles.main}>
 					Add a new Blog!!! 
 				</Text>
-				
-
-				
-				
 					<TextInput
 						placeholder="Start typing title......."
 				        autoCapitalize="none"
@@ -43,7 +40,6 @@ const AddBlog = (props) =>{
 				        onChangeText={(content) => updateState({ content })}
 				        style={styles.content}
 				    />
-			    
 				<Button
 					text = "Add"
 					onPress={props.addBlog}

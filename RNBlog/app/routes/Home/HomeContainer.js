@@ -1,6 +1,8 @@
+/*********************************Home react-native component & container*****************************/
 import React, { PropTypes } from 'react';
 import Home from './Home';
 import Meteor , { createContainer } from 'react-native-meteor';
+
 import Routes from '../../config/routes';
 
 const HomeContainer = (props) => {
@@ -22,7 +24,7 @@ export default createContainer(() => {
 		user = Meteor.user();
 		Meteor.call('users.sessionUpdate', function(err){
 			if(err)
-				console.log("err",err)
+				console.log("err",err);
 		})
 	}
   return {

@@ -1,3 +1,4 @@
+/******************************************Layout for logged out users********************************************/
 import React from 'react';
 import TabNavigator from 'react-native-tab-navigator';
 import { Image, Text, View } from 'react-native';
@@ -9,6 +10,7 @@ import Routes from '../../config/routes';
 import images from '../../config/images';
 import styles from './styles';
 
+//uses navigator and ex-navigator to navigate user through app
 class Logged extends React.Component {
 	constructor(props){
 		super(props);
@@ -34,18 +36,14 @@ class Logged extends React.Component {
 		            source={Icon}
 		          />
 		        )}
-				onPress={() => this.setState({ selectedTab: title })}
-			>	
+				onPress={() => this.setState({ selectedTab: title })}>	
 				
-					<ExNavigator
-					initialRoute={initialRoute}
-					 style={{flex:1}}
-					sceneStyle={sceneStyle}
-					showNavigationBar={initialRoute.showNavigationBar}	
-					/>
-					
-          		
-				
+				<ExNavigator
+				initialRoute={initialRoute}
+				 style={{flex:1}}
+				sceneStyle={sceneStyle}
+				showNavigationBar={initialRoute.showNavigationBar}	
+				/>	
 			</TabNavigator.Item>	
 		);
 	}

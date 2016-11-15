@@ -1,3 +1,4 @@
+/**********************************Configuration for various images************************************/
 const images = {
 	icons: {
     	home: require('../images/home-icon.png'),

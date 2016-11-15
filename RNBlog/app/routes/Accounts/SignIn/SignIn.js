@@ -1,3 +1,4 @@
+/***************************************Sign In React-native component view********************************************/
 import React from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
@@ -10,8 +11,7 @@ import styles from './styles';
 
 
 const SignIn = (props) => {
-	const {updateState, signIn, createAccount, error , confrimPaswordVisible } = props;
-
+	const {updateState, signIn, createAccount, error } = props;
 	return (
 		<Image 
 			style={styles.backgroundImage}
@@ -68,7 +68,7 @@ const SignIn = (props) => {
 			</View>	
 			</ScrollView>	
 		</Image>
-	)
+	);
 };
 
 export default SignIn;

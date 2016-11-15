@@ -1,9 +1,10 @@
+/******************************************Loading Component********************************************/
 import React from 'react';
 import { View, ActivityIndicator, Text, Image } from 'react-native';
 import styles from './styles';
 import images from '../../config/images';
 
-
+//displays loading indicator at the time of loading data
 const Loading = (props) => {
   return (
     <Image 
@@ -25,6 +26,7 @@ Loading.propTypes = {
   size: React.PropTypes.string,
 };
 
+//default props
 Loading.defaultProps = {
   size: 'large',
 };

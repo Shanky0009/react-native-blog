@@ -15,7 +15,7 @@ export default StyleSheet.create({
 		height:50,
 		borderTopLeftRadius:6,
 		borderTopRightRadius:6,
-		backgroundColor:'rgba(212, 156, 32, 0.47)',
+		backgroundColor:'rgba(51, 39, 39, 0.20)',
 		
 	},
 	pass:{
@@ -27,7 +27,7 @@ export default StyleSheet.create({
 		height:50,
 		borderBottomLeftRadius:6,
 		borderBottomRightRadius:6,
-		backgroundColor:'rgba(212, 156, 32, 0.47)',
+		backgroundColor:'rgba(51, 39, 39, 0.20)',
 	},
 	backgroundImage: {
 	    flex: 1,

@@ -7,7 +7,6 @@ export default StyleSheet.create({
 		marginTop:10,
 		marginBottom:10,
 		height:60,
-
 	},
 	name:{
 		marginBottom: 25,
