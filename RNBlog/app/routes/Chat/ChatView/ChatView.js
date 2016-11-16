@@ -36,12 +36,14 @@ const ChatView = (props) => {
 			        			<Text style={styles.message}>{chats.sender}</Text>
 			        			<Text style={styles.message}>{chats.chatMessage}</Text>
 			        		</View>
-			        		</View>	
+			        		</View>
+			        		
 			        	:
 			        		<View style={styles.chatMessage2}>
 			        			<Text style={styles.message}>{chats.sender}</Text>
 			        			<Text style={styles.message}>{chats.chatMessage}</Text>
 			        		</View>
+
 			        	}		
 			        	</View>
 			        }	

@@ -15,9 +15,15 @@ const ProfileView = (props) => {
 			{profile?
 				<View style={styles.container}>
 					<View style={styles.profilePicView}>
+					{profile.profilePic?
 						<Image source={profile.profilePic}
 						style={styles.profilePic}
 						/>
+					:
+						<Image source={images.avatar}
+							style={styles.profilePic}
+							/>
+					}
 					</View>
 					<View style={styles.profileContent}>
 						<View>
