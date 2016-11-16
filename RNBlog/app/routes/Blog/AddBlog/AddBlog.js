@@ -29,6 +29,7 @@ const AddBlog = (props) =>{
 					<TextInput
 						placeholder="Start typing title......."
 				        autoCapitalize="none"
+				        placeholderTextColor="#FFFFFF"
 				        autoCorrect={false}
 				        onChangeText={(title) => updateState({ title })}
 				        style={styles.title}
@@ -36,6 +37,7 @@ const AddBlog = (props) =>{
 				    <TextInput
 						placeholder="Start typing......."
 				        autoCapitalize="none"
+				        placeholderTextColor="#FFFFFF"
 				        autoCorrect={false}
 				        onChangeText={(content) => updateState({ content })}
 				        style={styles.content}

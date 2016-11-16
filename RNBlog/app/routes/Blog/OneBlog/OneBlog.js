@@ -101,6 +101,7 @@ const OneBlog = (props) => {
 				        		<View >
 						        	<TextInput
 										placeholder="Comment......."
+										placeholderTextColor="#FFFFFF"
 								        onChangeText={(comment) => updateState({ comment })}  
 								        style={styles.main}
 								        ref={component => this.textInput = component}

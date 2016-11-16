@@ -1,6 +1,6 @@
 /****************************Profile View react-native component view*****************************/
 import React from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, TouchableOpacity} from 'react-native';
 import Meteor from 'react-native-meteor';
 
 import images from '../../../config/images';
@@ -53,6 +53,16 @@ const ProfileView = (props) => {
 								: Phone No
 							</Text>
 						</View>
+					</View>
+					<View style={styles.deleteUser}>
+						<TouchableOpacity
+								style={styles.profilePicButton}
+								onPress={props.deletePress}
+								>
+							<Text style={styles.deleteText}>
+								Delete Account
+							</Text>
+						</TouchableOpacity>	
 					</View>	
 				</View>		
 			:

@@ -112,7 +112,7 @@ class ProfileUpdateContainer extends Component{
 			    this.setState({
 			      profilePic: source
 			    });
-			    
+			    console.log("ins")
 			  }
 		});
 	} 
@@ -129,7 +129,7 @@ class ProfileUpdateContainer extends Component{
 	 	});
 	}
 
-	componentWillReceiveProps(nextProps){
+	componentWillMount(){
 		if(this.props.profile){
 			this.setState(this.props.profile);	
 		}
@@ -137,7 +137,6 @@ class ProfileUpdateContainer extends Component{
 
 	shouldComponentUpdate(nextProps, nextState){
 		if(nextProps.profile.profilePic != nextState.profilePic){
-			this.setState({profile:nextState.profilePic})
 			return true;
 		} else {
 			return false;
@@ -170,7 +169,6 @@ export default createContainer(()=>{
 	} else {
 		profile='';
 	}
-
 	return {
 		profile:profile
 	}

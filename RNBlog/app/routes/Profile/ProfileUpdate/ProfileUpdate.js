@@ -16,6 +16,7 @@ const ProfileUpdate = (props) => {
 				ref={(scrollView) =>  this.scroller = scrollView}
 		        automaticallyAdjustContentInsets={false}
 		        scrollEventThrottle={200}
+		        keyboardShouldPersistTaps={true}
 		        onScroll={props.handleScroll}
 		        onLayout={props.handleLayout}
 		        >
@@ -60,24 +61,28 @@ const ProfileUpdate = (props) => {
 					<TextInput 
 						placeholder="First Name"
 						defaultValue={profile.firstName}
+						placeholderTextColor="#FFFFFF"
 				        onChangeText={(firstName) => updateState({ firstName })}
 				        style={styles.main1}
 					/>
 					<TextInput 
 						placeholder="Last Name"
 						defaultValue={profile.lastName}
+						placeholderTextColor="#FFFFFF"
 				        onChangeText={(lastName) => updateState({ lastName })}
 				        style={styles.main}
 					/>
 					<TextInput 
 						placeholder="Address"
 						defaultValue={profile.address}
+						placeholderTextColor="#FFFFFF"
 				        onChangeText={(address) => updateState({ address })}
 				        style={styles.main}
 					/>
 					<TextInput 
 						placeholder="Phone Number"
 						defaultValue={profile.phnNo}
+						placeholderTextColor="#FFFFFF"
 				        onChangeText={(phnNo) => updateState({ phnNo })}
 				        style={styles.main2}
 					/>

@@ -9,7 +9,6 @@ import styles from './styles';
 
 const Home = (props) =>{
 	const {user} = props;
-	console.log("ook")
 	return(	
 		<Image 
 			style={styles.backgroundImage}

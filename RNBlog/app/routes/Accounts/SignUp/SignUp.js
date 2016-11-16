@@ -27,7 +27,7 @@ const SignUp = (props) => {
 				<View>
 					<View>
 						<Text style={styles.header}>
-							Create your Account at Blogger's Blogger
+							Create your Account at Deligence Technologies Blog!
 						</Text>
 					</View>
 
@@ -35,6 +35,7 @@ const SignUp = (props) => {
 						<TextInput
 							placeholder="Username"
 					        autoCapitalize="none"
+					        placeholderTextColor="#FFFFFF"
 					        autoCorrect={false}
 					        onChangeText={(username) => updateState({ username })}
 					        style={styles.username}
@@ -42,6 +43,7 @@ const SignUp = (props) => {
 						<TextInput
 							placeholder="Email Address"
 					        autoCapitalize="none"
+					        placeholderTextColor="#FFFFFF"
 					        autoCorrect={false}
 					        onChangeText={(email) => updateState({ email })}
 					        style={styles.main}
@@ -49,6 +51,7 @@ const SignUp = (props) => {
 					     <TextInput
 					     	placeholder="Password"
 					     	autoCorrect={false}
+					     	placeholderTextColor="#FFFFFF"
 					     	autoCapitalize="none"
 					     	onChangeText={(password) => updateState({password})}
 					     	style={styles.pass}

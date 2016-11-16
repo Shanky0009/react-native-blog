@@ -12,7 +12,7 @@ export default StyleSheet.create({
 	main:{
 		fontSize:20,
 		textAlign:'center',
-		color:'#484040',
+		color:'#FFFFFF',
 		fontWeight:'400',
 		fontStyle:'italic',
 		height:50,

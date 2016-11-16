@@ -82,5 +82,14 @@ export default StyleSheet.create({
 	    color:"#484040",
 	    fontFamily: 'Verdana, Arial, Helvetica, sans-serif',
     	fontStyle: 'italic',
+  	},
+  	deleteUser:{
+  		// flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        paddingLeft:23
+  	},
+  	deleteText:{
+  		alignItems:'flex-end'
   	}
 });
