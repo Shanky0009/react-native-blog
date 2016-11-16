@@ -17,8 +17,6 @@ class BlogContainer extends Component{
     this.onDeleteBlogPress = this.onDeleteBlogPress.bind(this);
   }
 
-
-
   onDeleteBlogPress(id){
     if(Meteor.userId()){
       Meteor.call('blogs.remove', id, function(err){
@@ -29,13 +27,6 @@ class BlogContainer extends Component{
       this.props.navigator.push(Routes.getBlogRoute());
     }
   }
-
-  // componentWillReceiveProps(nextProps){
-  //   if(this.state.flag)  
-  //     this.setState({oneBlog:''})
-  //   else
-  //     this.setState({comment:''})
-  // }
 
   onOneBlogPress(id){
     this.props.navigator.resetTo(Routes.getOneBlogRoute(id))
@@ -51,10 +42,7 @@ class BlogContainer extends Component{
         onAddBlogPress={() => this.props.navigator.push(Routes.getAddBlogRoute())}
         onDeleteBlogPress={(id) => this.onDeleteBlogPress(id)}
         onOneBlogPress={(id) => this.onOneBlogPress(id)}
-       // onCommentBlogPress={(id) => this.onCommentBlogPress(id)}
         onUserProPress={(id) => this.onUserProPress(id)}
-        //onDeleteCommentPress={(blogId, commentId) => this.onDeleteCommentPress(blogId, commentId)}
-        //oneBlog={this.setState.bind(this)}
         updateState={this.setState.bind(this)}
         blogData={this.props.blogData}
         currentUser={this.props.currentUser}

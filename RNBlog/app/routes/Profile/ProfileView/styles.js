@@ -71,5 +71,16 @@ export default StyleSheet.create({
   		marginTop:-30,
   		flexDirection:'column',
   		alignItems:'flex-end'
+  	},
+  	noPro:{
+  		flexDirection:'column',
+  		alignSelf:'center',
+  		justifyContent:'center',
+  		marginTop: 50,
+	    fontSize:20,
+	    textAlign:'center',
+	    color:"#484040",
+	    fontFamily: 'Verdana, Arial, Helvetica, sans-serif',
+    	fontStyle: 'italic',
   	}
 });

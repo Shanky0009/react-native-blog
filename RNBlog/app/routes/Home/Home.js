@@ -9,13 +9,14 @@ import styles from './styles';
 
 const Home = (props) =>{
 	const {user} = props;
+	console.log("ook")
 	return(	
 		<Image 
 			style={styles.backgroundImage}
        		source={images.backGround} >
 			<View style={styles.container}>
           		<Text style={styles.main}>
-					Welcome to blogger's Blog!!! 
+					Welcome to Deligence Technologies Blog!!! 
 				</Text>
 				{user?
 					<Button

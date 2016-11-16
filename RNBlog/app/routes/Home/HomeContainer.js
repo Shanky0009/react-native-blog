@@ -1,18 +1,29 @@
 /*********************************Home react-native component & container*****************************/
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import Home from './Home';
 import Meteor , { createContainer } from 'react-native-meteor';
 
 import Routes from '../../config/routes';
 
-const HomeContainer = (props) => {
-	return (
-		<Home
-			onSignInPress={() => props.navigator.push(Routes.getSignInRoute())}
-			onLogoutPress={() => props.navigator.push(Routes.getLogoutRoute())}
-			user={props.user}
-		/>	
-	);
+class HomeContainer extends Component {
+	constructor(props){
+		super(props)
+	}
+
+	shouldComponentUpdate(nextProps){
+		return false
+	}
+
+	render(){
+		return (
+			<Home
+				onSignInPress={() => this.props.navigator.push(Routes.getSignInRoute())}
+				onLogoutPress={() => this.props.navigator.push(Routes.getLogoutRoute())}
+				user={this.props.user}
+			/>	
+		);
+	}
+	
 };
 
 export default createContainer(() => {
@@ -24,7 +35,7 @@ export default createContainer(() => {
 		user = Meteor.user();
 		Meteor.call('users.sessionUpdate', function(err){
 			if(err)
-				console.log("err",err);
+				alert("err",err);
 		})
 	}
   return {

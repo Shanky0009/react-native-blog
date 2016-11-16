@@ -66,7 +66,7 @@ export default StyleSheet.create({
     	fontStyle: 'italic'
     },
     commentBox:{
-    	marginTop:20
+    	marginTop:30
     },
     commentBoxTitleText:{
         fontWeight:'bold',
@@ -78,7 +78,8 @@ export default StyleSheet.create({
     },
     messageBoxBodyText:{
         color:'#fff',
-        fontSize:16
+        fontSize:16,
+        marginBottom:20
     },
 	cornerButton:{
 		width: 10,

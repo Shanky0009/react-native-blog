@@ -18,9 +18,9 @@ const AddBlog = (props) =>{
 					ref={(scrollView) =>  this.scroller = scrollView}
 			        automaticallyAdjustContentInsets={false}
 			        scrollEventThrottle={200}
+			        keyboardShouldPersistTaps={true}
 			        onScroll={props.handleScroll}
 			        onLayout={props.handleLayout}
-			        onContentSizeChange={props.handleContentChange}
 			        >
 			<View style={styles.container}>
           		<Text style={styles.main}>

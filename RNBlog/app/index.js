@@ -17,7 +17,7 @@ class Blog extends Component{
 		const { status, user, loggingIn } = this.props;
 
 		if (status.connected === false || loggingIn) {
-			return <Loading message="Logging in to Bloggers' Blog"/>
+			return <Loading message="Logging in to Deligence Technologies Blog"/>
 		}	
 		else if (user !== null) {
 		    return <LoggedIn />;

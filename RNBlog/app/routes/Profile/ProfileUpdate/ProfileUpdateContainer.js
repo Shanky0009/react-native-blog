@@ -137,6 +137,7 @@ class ProfileUpdateContainer extends Component{
 
 	shouldComponentUpdate(nextProps, nextState){
 		if(nextProps.profile.profilePic != nextState.profilePic){
+			this.setState({profile:nextState.profilePic})
 			return true;
 		} else {
 			return false;

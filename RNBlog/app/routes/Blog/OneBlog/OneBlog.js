@@ -10,7 +10,6 @@ import styles from './styles';
 
 const OneBlog = (props) => {
 	const { oneBlog, updateState, currentUser, blogId } = props;
-	console.log(oneBlog,"========>oneBlog")
 	return (
 		<Image 
 			style={styles.backgroundImage}
@@ -25,111 +24,108 @@ const OneBlog = (props) => {
 			:
 				<Text style={styles.header}>Log In to add a Blog! {currentUser}</Text>
 			}
-			
-		
-			{oneBlog?
-				<View>
-					<ScrollView 
-						ref={(scrollView) =>  this.scroller = scrollView}
-				        automaticallyAdjustContentInsets={true}
-				        keyboardShouldPersistTaps={true}
-			        >
-					<MeteorComplexListView
-			        contentContainerStyle={styles.list}
+
+			<View>
+				<ScrollView 
+					ref={(scrollView) =>  this.scroller = scrollView}
+			        automaticallyAdjustContentInsets={true}
 			        keyboardShouldPersistTaps={true}
-			        elements={()=>{return Meteor.collection('blogs').find({_id:props.oneBlog._id})}}
-			        enableEmptySections={true}
-			        renderRow={(blog) => 
-		        	<View>
-			        	{blog?
-			        		<View style={styles.item}>
-								<View style={styles.titleTop}>
-					        		<Text style={styles.messageBoxTitleText} onPress={() => props.onOneBlogPress(blog._id)}>
-					        			{blog.title}
-					        		</Text>
-					        		{blog.owner == Meteor.userId()?
-					        			<TouchableOpacity style={styles.cornerButton} onPress={() => props.onDeleteBlogPress(blog._id)}>
-										      <Text style={styles.buttonText} >
-										        &times;
-										      </Text>
-									    	</TouchableOpacity>
-					        		:
-					        			<View/>
-					        		}
-					        	</View>
-								<View>
+		        >
+				<MeteorComplexListView
+		        contentContainerStyle={styles.list}
+		        keyboardShouldPersistTaps={true}
+		        elements={()=>{return Meteor.collection('blogs').find({_id:props.oneBlog._id})}}
+		        enableEmptySections={true}
+		        renderRow={(blog) => 
+	        	<View>
+		        	{blog?
+		        		<View style={styles.item}>
+							<View style={styles.titleTop}>
+				        		<Text style={styles.messageBoxTitleText}>
+				        			{blog.title}
+				        		</Text>
+				        		{blog.owner == Meteor.userId()?
+				        			<TouchableOpacity style={styles.cornerButton} onPress={() => props.onDeleteBlogPress(blog._id)}>
+									      <Text style={styles.buttonText} >
+									        &times;
+									      </Text>
+								    	</TouchableOpacity>
+				        		:
+				        			<View/>
+				        		}
+				        	</View>
+							<View>
+								<TouchableOpacity onPress={() => props.onUserProPress(blog.owner)}>
 									<Text style={styles.ownerName}>
 										By: {blog.ownerName}
 									</Text>
-								</View>	
-
-					        	<Text style={styles.messageBoxBodyText}>{blog.content}</Text>
-
-					        	
-					        	{blog.comments?
-					        		<View style={styles.commentsBox}>
-						        		<MeteorComplexListView
-									        contentContainerStyle={styles.list}
-									        selector={{done: true}}
-									        elements={()=>{return blog.comments}}
-									        keyboardShouldPersistTaps={true}
-									        enableEmptySections={true}
-									        renderRow={(comments) => 
-									        	<View style={styles.titleTop}>
-									        		<Text style={styles.commentBoxTitleText}>
-									        			{comments.ownerName} says: {comments.comment}
-									        		</Text>
-									        		{(comments.commentOwner == Meteor.userId())||(comments.blogOwner == Meteor.userId())?
-									        			<TouchableOpacity style={styles.cornerButton} onPress={() => props.onDeleteCommentPress(blog._id, comments._id)}>
-													      <Text style={styles.buttonText} >
-													        &times;
-													      </Text>
-													    </TouchableOpacity>	
-									        		:
-									        			<View/>
-									        		}
-												</View>	
-									        }
-									     /> 
-									</View>
-					        	:
-					        		<View></View>
-					        	}
-
-					        	<View></View>
-
-					        	{Meteor.user()?
-					        		<View >
-							        	<TextInput
-											placeholder="Comment......."
-									        onChangeText={(comment) => updateState({ comment })}  
-									        style={styles.main}
-									        ref={component => this.textInput = component}
-									    />
-									    <Button
-											style={styles.commentButton}
-											text = "Comment"
-											onPress={() => props.onCommentBlogPress(blog._id)}
-										/>
-								    </View>
-					        	:
-					        		<View/>
-					        	}
-					        	
-			        		</View>		
-			        	:
-				        	<View>
-								<Text>No Blog Avaliable</Text>
+								</TouchableOpacity>
 							</View>	
-			        	}
-			        </View>	
-		        	}	
-		     		/>
-		     		</ScrollView>
-		    	</View>
-			:
-				<Loading message="Logging Blogs....."/>   
-			}
+
+				        	<Text style={styles.messageBoxBodyText}>{blog.content}</Text>
+
+				        	
+				        	{blog.comments?
+				        		<View style={styles.commentsBox}>
+					        		<MeteorComplexListView
+								        contentContainerStyle={styles.list}
+								        selector={{done: true}}
+								        elements={()=>{return blog.comments}}
+								        keyboardShouldPersistTaps={true}
+								        enableEmptySections={true}
+								        renderRow={(comments) => 
+								        	<View style={styles.titleTop}>
+								        		<Text style={styles.commentBoxTitleText}>
+								        			{comments.ownerName} says: {comments.comment}
+								        		</Text>
+								        		{(comments.commentOwner == Meteor.userId())||(comments.blogOwner == Meteor.userId())?
+								        			<TouchableOpacity style={styles.cornerButton} onPress={() => props.onDeleteCommentPress(blog._id, comments._id)}>
+												      <Text style={styles.buttonText} >
+												        &times;
+												      </Text>
+												    </TouchableOpacity>	
+								        		:
+								        			<View/>
+								        		}
+											</View>	
+								        }
+								     /> 
+								</View>
+				        	:
+				        		<View></View>
+				        	}
+
+				        	<View></View>
+
+				        	{Meteor.user()?
+				        		<View >
+						        	<TextInput
+										placeholder="Comment......."
+								        onChangeText={(comment) => updateState({ comment })}  
+								        style={styles.main}
+								        ref={component => this.textInput = component}
+								    />
+								    <Button
+										style={styles.commentButton}
+										text = "Comment"
+										onPress={() => props.onCommentBlogPress(blog._id)}
+									/>
+							    </View>
+				        	:
+				        		<View/>
+				        	}
+				        	
+		        		</View>		
+		        	:
+			        	<View>
+							<Text>No Blog Avaliable</Text>
+						</View>	
+		        	}
+		        </View>	
+	        	}	
+	     		/>
+	     		</ScrollView>
+	    	</View>
 		</Image>
 	)
 } 

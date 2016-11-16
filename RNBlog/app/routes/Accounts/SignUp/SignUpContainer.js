@@ -18,6 +18,7 @@ class SignUpContainer extends Component {
       scrollY: null,
     };
 
+    this.handleSignUp.bind(this)
     ;[
       'handleKeyboardShow', 'handleKeyboardHide',
       'handleLayout', 'handleScroll',
@@ -116,13 +117,13 @@ class SignUpContainer extends Component {
   handleCreateAccount() {
     const { username, email, password } = this.state;
     if (this.validInput()) {
-      Accounts.createUser({ username, email, password }, function(err) {
+      const profile = null
+      Accounts.createUser({ username, email, password, profile }, function(err) {
         if (err) {
           alert(err.reason);
-        } else {
-          this.handleSignUp();
         }
       });
+      this.props.navigator.resetTo(Routes.getSignInRoute());
     } else {
       LayoutAnimation.configureNext(LayoutAnimation.Presets.spring);
     }
@@ -133,6 +134,8 @@ class SignUpContainer extends Component {
       <SignUp
         updateState={this.setState.bind(this)}
         createAccount={this.handleCreateAccount.bind(this)}
+        handleScroll={this.handleScroll.bind(this)}
+        handleLayout={this.handleLayout.bind(this)}
         {...this.state}
       />
     );

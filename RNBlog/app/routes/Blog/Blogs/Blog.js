@@ -48,6 +48,13 @@ const Blog = (props) => {
 											:
 												<View/>
 											}	    
+										</View>
+										<View>
+											<TouchableOpacity onPress={() => props.onUserProPress(blog.owner)}>
+												<Text style={styles.ownerName}>
+													By: {blog.ownerName}
+												</Text>
+											</TouchableOpacity>
 										</View>	
 						        		<Text numberOfLines={1} style={styles.messageBoxBodyText}>
 						        			{blog.content}

@@ -73,7 +73,6 @@ class OneBlogContainer extends Component{
   onDeleteBlogPress(id){
     if(Meteor.userId()){
       Meteor.call('blogs.remove', id, function(err){
-        console.log(err)
         if(err){
           alert(err.error)
         }
@@ -84,7 +83,6 @@ class OneBlogContainer extends Component{
 
   onCommentBlogPress(id){
     let blogOwner = Meteor.collection('blogs').findOne({_id:id}).owner;
-    console.log(id, blogOwner, Meteor.userId())
     if(Meteor.userId() && this.state.comment != ''){
       Meteor.call('blogs.comment', this.state.comment, id, blogOwner, Meteor.userId(), Meteor.user().username, function(err){
         if(err){
@@ -98,7 +96,6 @@ class OneBlogContainer extends Component{
 
   onDeleteCommentPress(blogId, commentId){
     let blogOwner = Meteor.collection('blogs').findOne({_id:blogId}).owner;
-    console.log(blogId, blogOwner, Meteor.userId())
     if(Meteor.userId()){
       Meteor.call('blogs.removeComment', blogId, commentId, blogOwner, Meteor.userId(), function(err){
         if(err){
@@ -109,15 +106,9 @@ class OneBlogContainer extends Component{
     }
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   if(this.state.flag)  {
-  //     this.setState({oneBlog:nextProps})
-  //     console.log(nextProps)
-      
-  //   } 
-  //    // else
-  //    //  this.setState({comment:''})
-  // }
+  onUserProPress(id){
+    this.props.navigator.push(Routes.getProfileViewRoute(id))
+  }
 
   shouldComponentUpdate(nextProps, nextState){
     if(this.state.flag){
@@ -134,12 +125,14 @@ class OneBlogContainer extends Component{
       <OneBlog
         onAddBlogPress={() => this.props.navigator.push(Routes.getAddBlogRoute())}
         onDeleteBlogPress={(id) => this.onDeleteBlogPress(id)}
-        onOneBlogPress={(id) => this.onOneBlogPress(id)}
         onCommentBlogPress={(id) => this.onCommentBlogPress(id)}
         onDeleteCommentPress={(blogId, commentId) => this.onDeleteCommentPress(blogId, commentId)}
         oneBlog={Meteor.collection('blogs').findOne({_id:this.props.blogId})}
+        onUserProPress={(id) => this.onUserProPress(id)}
         updateState={this.setState.bind(this)}
         currentUser={this.props.currentUser}
+        handleScroll={this.handleScroll.bind(this)}
+        handleLayout={this.handleLayout.bind(this)}
         {...this.state}
       />
     );

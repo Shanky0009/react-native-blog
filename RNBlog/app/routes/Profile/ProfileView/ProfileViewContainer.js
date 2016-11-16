@@ -11,11 +11,20 @@ class ProfileContainer extends Component{
 
 	render(){
 		if(this.props.userId){
-			return(
-				<ProfileView
-					profile={Meteor.collection('users').findOne({ _id: this.props.userId }).profile}
-				/>	
-			)
+			if(Meteor.collection('users').findOne({ _id: this.props.userId }, {profile: null})){
+				return(
+					<ProfileView
+						profile={Meteor.collection('users').findOne({ _id: this.props.userId }).profile}
+					/>	
+				)
+			} else {
+				return(
+					<ProfileView
+						profile=''
+					/>	
+				)
+			}
+			
 		} else {
 			return(
 				<ProfileView

@@ -27,9 +27,6 @@ const ProfileView = (props) => {
 						</View>		
 						<View style={styles.content1}>
 							<Text style={styles.main}>
-								{Meteor.user().username}
-							</Text>
-							<Text style={styles.main}>
 								{profile.firstName}
 							</Text>
 							<Text style={styles.main}>
@@ -43,10 +40,6 @@ const ProfileView = (props) => {
 							</Text>
 						</View>
 						<View style={styles.content2}>
-							
-							<Text style={styles.label}>	
-								 : Username 
-							</Text>
 							<Text style={styles.label}>	
 								: First Name 
 							</Text>
@@ -64,7 +57,7 @@ const ProfileView = (props) => {
 				</View>		
 			:
 				<View style={styles.container}>
-					<Text style={styles.main}>
+					<Text style={styles.noPro}>
 						No Profile to display, please update your Profile..!!!
 					</Text>
 				</View>			

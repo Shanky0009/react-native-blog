@@ -71,7 +71,7 @@ export default class AddBlogContainer extends Component {
   handleAddBlog() {    
     const { title, content } = this.state;
     Meteor.call('blogs.addEdit', title, content, Meteor.userId(), function(err){
-      console.log(err);
+      alert(err);
     });
     this.props.navigator.resetTo(Routes.getBlogRoute());
   }

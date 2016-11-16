@@ -122,6 +122,8 @@ class SignInContainer extends Component {
         updateState={this.setState.bind(this)}
         signIn={this.handleSignIn.bind(this)}
         createAccount={() => this.props.navigator.push(Routes.getSignUpRoute())}
+        handleScroll={this.handleScroll.bind(this)}
+        handleLayout={this.handleLayout.bind(this)}
         {...this.state}
       />
     );

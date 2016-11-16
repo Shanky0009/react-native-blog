@@ -100,6 +100,14 @@ class ChatViewContainer extends Component{
 	    }
 	}
 
+	shouldComponentUpdate(nextProps, nextState){
+		if(this.state!=nextState){
+			this.setState(nextState)
+			return true
+		} else {
+			return false
+		}
+	}
 
 	render(){
 		return(

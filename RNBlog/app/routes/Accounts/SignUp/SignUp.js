@@ -19,51 +19,51 @@ const SignUp = (props) => {
        		<ScrollView 
 				ref={(scrollView) =>  this.scroller = scrollView}
 		        automaticallyAdjustContentInsets={false}
-		        onScroll={() => { console.log('onScroll!'); }}
 		        scrollEventThrottle={200}
+		        keyboardShouldPersistTaps={true}
 		        onScroll={props.handleScroll}
 		        onLayout={props.handleLayout}
 		        >
-			<View>
 				<View>
-					<Text style={styles.header}>
-						Create your Account at Blogger's Blogger
-					</Text>
-				</View>
+					<View>
+						<Text style={styles.header}>
+							Create your Account at Blogger's Blogger
+						</Text>
+					</View>
 
-				<View style={styles.container}>
-					<TextInput
-						placeholder="Username"
-				        autoCapitalize="none"
-				        autoCorrect={false}
-				        onChangeText={(username) => updateState({ username })}
-				        style={styles.username}
-				      />
-					<TextInput
-						placeholder="Email Address"
-				        autoCapitalize="none"
-				        autoCorrect={false}
-				        onChangeText={(email) => updateState({ email })}
-				        style={styles.main}
-				      />
-				     <TextInput
-				     	placeholder="Password"
-				     	autoCorrect={false}
-				     	autoCapitalize="none"
-				     	onChangeText={(password) => updateState({password})}
-				     	style={styles.pass}
-				     />
+					<View style={styles.container}>
+						<TextInput
+							placeholder="Username"
+					        autoCapitalize="none"
+					        autoCorrect={false}
+					        onChangeText={(username) => updateState({ username })}
+					        style={styles.username}
+					      />
+						<TextInput
+							placeholder="Email Address"
+					        autoCapitalize="none"
+					        autoCorrect={false}
+					        onChangeText={(email) => updateState({ email })}
+					        style={styles.main}
+					      />
+					     <TextInput
+					     	placeholder="Password"
+					     	autoCorrect={false}
+					     	autoCapitalize="none"
+					     	onChangeText={(password) => updateState({password})}
+					     	style={styles.pass}
+					     />
+					</View>
+					
+					<View style={styles.buttons}>
+						<TouchableOpacity style={styles.button} onPress={createAccount}>
+					      	<Text style={styles.buttonText} >
+					        	Create Account
+					      	</Text>
+					    </TouchableOpacity>    
+					</View>	
+					<KeyboardSpacer />
 				</View>
-				
-				<View style={styles.buttons}>
-					<TouchableOpacity style={styles.button} onPress={createAccount}>
-				      	<Text style={styles.buttonText} >
-				        	Create Account
-				      	</Text>
-				    </TouchableOpacity>    
-				</View>	
-				<KeyboardSpacer />
-			</View>
 			</ScrollView>	
 		</Image>
 	);
